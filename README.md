@@ -14,3 +14,6 @@ $ git remote add origin +地址 #远程仓库的提交（第一次链接）
 $ git push -u origin master   #仓库关联
 $ git push                    #远程仓库的提交（第二次及之后）
 $ git pull origin master      #下载 同步本地仓库
+
+
+branch
