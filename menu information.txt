@@ -1,41 +1,46 @@
+
+{
+    "name" : "DELUXE CAESAR",
+    "price" : "9.99",
+    "type" : "SALADS",
+    "inventory" : "99",
+    "image" : "DELUXE CAESAR.jpg",
+    "description" : "Romaine, parmesan crisps, pancetta (bacon), grated parmesan, bruschetta tomatoes, Caesar dressing"
+}
+
 菜单
 family meals
 
-FAMILY PASTA
-	A pan of our pasta, a side salad, and then choose your favorite protein, house-made sauces, and fresh toppings to build your own pasta bowls at home. Feeds 4-6 people
-FAMILY SALAD
-	A pan of greens and six garlic doughs, and then choose your favorite protein, house-made dressings, and fresh toppings to build your own salads at home. Feeds 4-6 people
-FAMILY PIADAS
-	A Crispy Chicken BLT Piada, Grilled Chicken Avocado Piada, Sausage Chef's Favorite Piada, and Steak Tuscan Piada served with a pan of side salad. Feeds 4-6 people
-CHICKEN ALFREDO TAKE & BAKE
-	A pan of penne pasta with grilled chicken, alfredo sauce, roasted broccoli and parmesan cheese prepared for you to bake hot from your oven. Feeds 4-6 people
-MEATBALL POMODORO TAKE & BAKE
-	A pan of penne pasta with meatballs, pomodoro sauce and parmesan cheese prepared for you to bake hot from your oven. Feeds 4-6 people
-SAUSAGE DIAVOLO TAKE & BAKE
-	A pan of penne pasta with Italian sausage, diavolo sauce, bruschetta tomatoes and parmesan cheese prepared for you to bake hot from your oven. Feeds 4-6 people
-POWER BOWL TAKE & BAKE
-	A pan of our Power Bowl. Red quinoa, roasted broccoli, sweet corn & tomato, glazed chickpeas, pickled red onions, roasted carrots, yogurt harissa drizzle. Feeds 4-6 people
-
-
+	FAMILY PASTA
+		A pan of our pasta, a side salad, and then choose your favorite protein, house-made sauces, and fresh toppings to build your own pasta bowls at home. Feeds 4-6 people
+	FAMILY SALAD
+		A pan of greens and six garlic doughs, and then choose your favorite protein, house-made dressings, and fresh toppings to build your own salads at home. Feeds 4-6 people
+	FAMILY PIADAS
+		A Crispy Chicken BLT Piada, Grilled Chicken Avocado Piada, Sausage Chef's Favorite Piada, and Steak Tuscan Piada served with a pan of side salad. Feeds 4-6 people
+	CHICKEN ALFREDO TAKE & BAKE
+		A pan of penne pasta with grilled chicken, alfredo sauce, roasted broccoli and parmesan cheese prepared for you to bake hot from your oven. Feeds 4-6 people
+	MEATBALL POMODORO TAKE & BAKE
+		A pan of penne pasta with meatballs, pomodoro sauce and parmesan cheese prepared for you to bake hot from your oven. Feeds 4-6 people
+	SAUSAGE DIAVOLO TAKE & BAKE
+		A pan of penne pasta with Italian sausage, diavolo sauce, bruschetta tomatoes and parmesan cheese prepared for you to bake hot from your oven. Feeds 4-6 people
+	POWER BOWL TAKE & BAKE
+		A pan of our Power Bowl. Red quinoa, roasted broccoli, sweet corn & tomato, glazed chickpeas, pickled red onions, roasted carrots, yogurt harissa drizzle. Feeds 4-6 people
 fit bowls
 
-SUPER PROTEIN BOWL
-	Sautéed zucchini & mushroom, roasted broccoli, basil pesto, mozzarella, bruschetta tomatoes. With grilled chicken, this bowl contains 47g of protein
-KETO BLT SALAD
-	Romaine, bruschetta tomatoes, pancetta, mozzarella, creamy parmesan. Customization to this small-sized salad with our Keto-friendly toppings may make this dish fall outside of target macros
-PALEO BERRY BALSAMIC SALAD
-	Spinach, red cabbage, arugula, strawberries, fresh avocado, almonds, berry balsamic dressing. Make it your own with our available Paleo-approved toppings
+	SUPER PROTEIN BOWL
+		Sautéed zucchini & mushroom, roasted broccoli, basil pesto, mozzarella, bruschetta tomatoes. With grilled chicken, this bowl contains 47g of protein
+	KETO BLT SALAD
+		Romaine, bruschetta tomatoes, pancetta, mozzarella, creamy parmesan. Customization to this small-sized salad with our Keto-friendly toppings may make this dish fall outside of target macros
+	PALEO BERRY BALSAMIC SALAD
+		Spinach, red cabbage, arugula, strawberries, fresh avocado, almonds, berry balsamic dressing. Make it your own with our available Paleo-approved toppings
 
 piadas
-
-AVOCADO PIADA
-	Italian-style street wrap with pancetta (bacon), arugula, mozzarella, fresh avocado, sweet corn & tomato, basil aioli
-CRISPY CHICKEN BLT PIADA
-	Italian-style street wrap with pancetta (bacon), romaine, bruschetta tomatoes, creamy parmesan, basil aioli. Best with crispy chicken
-CHEF'S FAVORITE PIADA
-	Italian-style street wrap with spicy diavolo sauce, romaine, mozzarella, sweet peppers, spicy ranch
-
-
+	AVOCADO PIADA
+		Italian-style street wrap with pancetta (bacon), arugula, mozzarella, fresh avocado, sweet corn & tomato, basil aioli
+	CRISPY CHICKEN BLT PIADA
+		Italian-style street wrap with pancetta (bacon), romaine, bruschetta tomatoes, creamy parmesan, basil aioli. Best with crispy chicken
+	CHEF'S FAVORITE PIADA
+		Italian-style street wrap with spicy diavolo sauce, romaine, mozzarella, sweet peppers, spicy ranch
 salads
 
 DELUXE CAESAR
