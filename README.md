@@ -1,5 +1,13 @@
 # resturantApp-NodeJS
 
+Yang: 18:00 04/21/2020	增加menu的database，图片和信息
+
+
+
+
+
+
+
 $ git clone 链接					克隆仓库到本地
 
 $ git init                    #把当前目录变成git可以管理的仓库

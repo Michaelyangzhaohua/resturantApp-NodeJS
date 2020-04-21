@@ -1,13 +1,12 @@
 
 {
-    "name" : "DELUXE CAESAR",
-    "price" : "9.99",
-    "type" : "SALADS",
+    "name" : "GALLON OF UNSWEETENED TEA",
+    "price" : "2.79",
+    "type" : "BEVERAGES",
     "inventory" : "99",
-    "image" : "DELUXE CAESAR.jpg",
-    "description" : "Romaine, parmesan crisps, pancetta (bacon), grated parmesan, bruschetta tomatoes, Caesar dressing"
+    "image" : "GALLON OF UNSWEETENED TEA.jpg",
+    "description" : "A gallon of our freshly brewed unsweetened tea. Comes with ice, lemon wedges, sugar packets, and 10 cups"
 }
-
 菜单
 family meals
 
@@ -33,7 +32,6 @@ fit bowls
 		Romaine, bruschetta tomatoes, pancetta, mozzarella, creamy parmesan. Customization to this small-sized salad with our Keto-friendly toppings may make this dish fall outside of target macros
 	PALEO BERRY BALSAMIC SALAD
 		Spinach, red cabbage, arugula, strawberries, fresh avocado, almonds, berry balsamic dressing. Make it your own with our available Paleo-approved toppings
-
 piadas
 	AVOCADO PIADA
 		Italian-style street wrap with pancetta (bacon), arugula, mozzarella, fresh avocado, sweet corn & tomato, basil aioli
@@ -42,66 +40,55 @@ piadas
 	CHEF'S FAVORITE PIADA
 		Italian-style street wrap with spicy diavolo sauce, romaine, mozzarella, sweet peppers, spicy ranch
 salads
-
-DELUXE CAESAR
-	Romaine, parmesan crisps, pancetta (bacon), grated parmesan, bruschetta tomatoes, Caesar dressing
-POWER BOWL
-	Red quinoa, roasted broccoli, sweet corn & tomato, glazed chickpeas, pickled red onions, roasted carrots, yogurt harissa drizzle
-THE FARMERS MARKET SALAD
-	Mixed greens, red cabbage, strawberries, feta, sweet corn & tomato, fresh avocado, spiced pecans, lemon-basil dressing
-CLASSIC CAESAR
-	Romaine, parmesan crisps, grated parmesan, Caesar dressing
-
-
+	DELUXE CAESAR
+		Romaine, parmesan crisps, pancetta (bacon), grated parmesan, bruschetta tomatoes, Caesar dressing
+	POWER BOWL
+		Red quinoa, roasted broccoli, sweet corn & tomato, glazed chickpeas, pickled red onions, roasted carrots, yogurt harissa drizzle
+	THE FARMERS MARKET SALAD
+		Mixed greens, red cabbage, strawberries, feta, sweet corn & tomato, fresh avocado, spiced pecans, lemon-basil dressing
+	CLASSIC CAESAR
+		Romaine, parmesan crisps, grated parmesan, Caesar dressing
 pastas
-
-CARBONARA PASTA
-	Pasta, parmesan alfredo, bruschetta tomatoes, pancetta (bacon), spinach, grated parmesan
-BASIL PESTO PASTA
-	Pasta, parmesan alfredo, basil pesto, bruschetta tomatoes, grated parmesan
-DIAVOLO PASTA
-	Pasta, spicy diavolo sauce, bruschetta tomatoes, chopped green onions, grated parmesan
-
+	CARBONARA PASTA
+		Pasta, parmesan alfredo, bruschetta tomatoes, pancetta (bacon), spinach, grated parmesan
+	BASIL PESTO PASTA
+		Pasta, parmesan alfredo, basil pesto, bruschetta tomatoes, grated parmesan
+	DIAVOLO PASTA
+		Pasta, spicy diavolo sauce, bruschetta tomatoes, chopped green onions, grated parmesan
 street sides
-
-SWEET CORN SALAD
-	Seasonal side with sweet corn, grape tomatoes, fresh basil, thyme, red onion, chili flake, paprika, lemon & olive oil
-
-PEPPERONI PIADA STICK
-	Baked Piada dough with pepperoni, hand-rolled and served with creamy parmesan
-
-PARMESAN PIADA STICK
-	Baked Piada dough with parmesan cheese, hand-rolled and served with creamy parmesan
-GARLIC DOUGH
-	Crispy, small Piada dough baked with mozzarella, garlic and extra virgin olive oil
-KETTLE CHIPS
-	Miss Vickie's kettle cooked potato chips seasoned with sea salt and made with Love & Care
-CUP OF LOBSTER BISQUE
-	Lobster and sweet sherry
-CALAMARI FRITTO MISTO
-	Calamari fried with hot peppers and served with pomodoro dipping sauce
-GRASS-FED MEATBALLS
-	Three all-beef meatballs rolled with Italian breadcrumbs and topped with pomodoro sauce and parmesan
-
-
+	SWEET CORN SALAD
+		Seasonal side with sweet corn, grape tomatoes, fresh basil, thyme, red onion, chili flake, paprika, lemon & olive oil
+	PEPPERONI PIADA STICK
+		Baked Piada dough with pepperoni, hand-rolled and served with creamy parmesan
+	PARMESAN PIADA STICK
+		Baked Piada dough with parmesan cheese, hand-rolled and served with creamy parmesan
+	GARLIC DOUGH
+		Crispy, small Piada dough baked with mozzarella, garlic and extra virgin olive oil
+	KETTLE CHIPS
+		Miss Vickie's kettle cooked potato chips seasoned with sea salt and made with Love & Care
+	CUP OF LOBSTER BISQUE
+		Lobster and sweet sherry
+	CALAMARI FRITTO MISTO
+		Calamari fried with hot peppers and served with pomodoro dipping sauce
+	GRASS-FED MEATBALLS
+		Three all-beef meatballs rolled with Italian breadcrumbs and topped with pomodoro sauce and parmesan
 beverages
-
-ITALIAN SODAS AND TEAS
-	Choose from four recipes: Orange Soda, Berry soda, Peach Tea and Lemon Tea
-REGULAR SOFT DRINK
-	Choose from a range of Pepsi products
-LARGE SOFT DRINK
-	Choose from a range of Pepsi products
-ACQUA PANNA SPRING WATER
-	Natural spring water bottled & imported from Tuscany.
-SAN PELLEGRINO SPARKLING WATER
-	Bottled sparkling water sourced from the foothills of the Italian Alps.
-GALLON OF BLACKBERRY HIBISCUS LEMONADE
-	A gallon of our Blackberry Hibiscus Lemonade. Comes with ice and 10 cups
-GALLON OF UNSWEETENED TEA
-	A gallon of our freshly brewed unsweetened tea. Comes with ice, lemon wedges, sugar packets, and 10 cups
-KIDS LOW-FAT MILK
-KIDS CHOCOLATE MILK
+	ITALIAN SODAS AND TEAS
+		Choose from four recipes: Orange Soda, Berry soda, Peach Tea and Lemon Tea
+	REGULAR SOFT DRINK
+		Choose from a range of Pepsi products
+	LARGE SOFT DRINK
+		Choose from a range of Pepsi products
+	ACQUA PANNA SPRING WATER
+		Natural spring water bottled & imported from Tuscany.
+	SAN PELLEGRINO SPARKLING WATER
+		Bottled sparkling water sourced from the foothills of the Italian Alps.
+	GALLON OF BLACKBERRY HIBISCUS LEMONADE
+		A gallon of our Blackberry Hibiscus Lemonade. Comes with ice and 10 cups
+	GALLON OF UNSWEETENED TEA
+		A gallon of our freshly brewed unsweetened tea. Comes with ice, lemon wedges, sugar packets, and 10 cups
+	KIDS LOW-FAT MILK
+	KIDS CHOCOLATE MILK
 
 
 
