@@ -1,6 +1,16 @@
 # resturantApp-NodeJS
 
 Yang: 18:00 04/21/2020	增加menu的database，图片和信息
+Yang: 18:10 04/21/2020	设置最初router，http://localhost:3000/api/menus
+
+
+
+
+
+
+
+
+
 
 
 

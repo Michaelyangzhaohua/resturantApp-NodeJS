@@ -15,7 +15,7 @@ var session = require('express-session');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-// var CarsRouter = require('./routes/cars');
+var MenusRouter = require('./routes/menus');
  
 var app = express();
 
@@ -44,7 +44,7 @@ app.use(methodOveride('_method')); // whenever find '_method', use to override
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
+app.use('/api/menus', MenusRouter);
 
 
 // catch 404 and forward to error handler

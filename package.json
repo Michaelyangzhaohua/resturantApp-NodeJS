@@ -16,7 +16,7 @@
     "jw-paginate": "^1.0.4",
     "method-override": "^3.0.0",
     "mongoose": "^5.7.10",
-    "monk": "^7.1.1",
+    "monk": "^7.2.0",
     "morgan": "~1.9.1",
     "pagination": "^0.4.6",
     "paginationjs": "^2.1.5",
