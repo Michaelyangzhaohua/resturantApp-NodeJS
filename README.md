@@ -46,8 +46,3 @@ $ git push -u origin master   #仓库关联
 $ git push                    #远程仓库的提交（第二次及之后）
 
 $ git pull origin master      #下载 同步本地仓库
-
-
-Yinglue: 18:04 04/20/2020
->>>>>>> 16d03813bbd7f59aec5bff71f9358c9a4d312758
-
