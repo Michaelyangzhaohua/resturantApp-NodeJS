@@ -1,5 +1,46 @@
 <% include partials/header %>
 
+<div class="jumbotron">
+  <h1 class="display-4">Vidzy Application</h1>
+  <p class="lead">This is the list of most popular videos</p>
+  <a class="btn btn-primary btn-lg" href="/videos/new" role="button">
+  Add new video</a>
+  <br>
+	<form action="/videos" method="GET" class="form-inline" id="movieSearch">
+		<div class="form-group">
+			<input type="text" name="search" placeholder="Movie Search By Title" class="form-control">
+			<select name="genre">
+				<option value="all">All</option>
+				<option value="scifi">SciFi</option>
+				<option value="fantasy">Fantasy</option>
+				<option value="drama">Drama</option>
+				<option value="action">Action</option>
+				<option value="adventure">Adventure</option>
+				<option value="crime">Crime</option>
+				<option value="musical">Musical</option>
+			</select>
+			<button type="submit" class="btn btn-info">Search</button>
+		</div>
+	</form>
+</div>
+
+
+
+<div class="container">
+
+
+<div class="row">
+<% menus.forEach(function(menu){ %>
+	<div class="sm-col-3">
+		<img src="images/<%= menu.image %>" style="width:200px; height:200px;" class="img-thumbnail"/>
+		<div class="caption"><a href="menus/<%= menu._id %>"><%= menu.name %></a></div>
+	</div>
+
+
+<% }); %>
+
+</div>
+</div>
 
 
 
