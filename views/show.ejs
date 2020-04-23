@@ -1,22 +1,25 @@
-<%- include ('partials/header') %>
+<% include partials/header %>
 
-
+<br>
+<br>
+<br>
+<br>
 <div class="container">
 <h1> Movie Details </h1>
 
-<p><img src="/images/<%= video.image %>" /></p>
-<p>Title: <%= video.title %></p>
-<p>Genre: <%= video.genre %></p>
-<p>Description: <%= video.description %></p>
+<p><img src="/images/<%= menus.image %>" /></p>
+<p>Title: <%= menus.title %></p>
+<p>Genre: <%= menus.genre %></p>
+<p>Description: <%= menus.description %></p>
 
 
-<a class="btn btn-warning" href="/videos/<%= video._id %>/edit" role="button">
-Edit video</a>
+<a class="btn btn-warning" href="/menus/<%= menus._id %>/edit" role="button">
+Edit menus</a>
 
 
-<form action="/videos/<%= video._id %>?_method=DELETE" method="POST">
+<form action="/menus/<%= menus._id %>?_method=DELETE" method="POST">
 
-<button type="submit" class="btn btn-danger">Delete video</button>
+<button type="submit" class="btn btn-danger">Delete menus</button>
 
 </form>
 
@@ -25,4 +28,9 @@ Edit video</a>
 </p>
 
 </div>
-<%- include ('partials/footer') %>
+<br>
+<br>
+<br>
+<br>
+<br>
+<% include partials/footer %>

@@ -1,0 +1,84 @@
+body {
+  background-color: #000;
+}
+
+#landing-header {
+  z-index: 1;
+  position: relative;
+  text-align: center;
+  padding-top: 40vh;
+}
+
+#landing-header h1 {
+  color: #fff;
+}
+
+.slideshow { 
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.slideshow li { 
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  opacity: 0;
+  z-index: 0;
+  animation: imageAnimation 20s linear infinite; 
+}
+
+.slideshow li:nth-child(1) { 
+  background-image: url(https://www.bmw.co.za/content/dam/bmw/marketZA/bmw_co_za/images/mainbanner/BMW_X3M_X4M_XXL_Banner.jpg);
+    
+}
+.slideshow li:nth-child(2) { 
+
+  background-image: url(https://www.autotrader.com/content/dam/autotrader/integrated_ads/_ford/_may29_19/ford_f150_large_v2.jpg);
+  animation-delay: 4s; 
+}
+.slideshow li:nth-child(3) { 
+  background-image: url(https://www.abt-sportsline.com/fileadmin/user_upload/ABT_RS6__Nogaro_Edition_Audi_RS6_tuning_Front_Felgen_blau.jpg);
+  animation-delay: 8s; 
+}
+.slideshow li:nth-child(4) { 
+  background-image: url(https://postmediadriving.files.wordpress.com/2018/11/bentley-continental-gt-convertible-8.jpg);
+  animation-delay: 12s; 
+}
+.slideshow li:nth-child(5) { 
+  background-image: url(https://fsmedia.imgix.net/5a/87/fc/a2/73ed/4c53/9eee/e929f7259655/tesla-model-x.jpeg?rect=0%2C417%2C2500%2C1252&auto=format%2Ccompress&dpr=2&w=650);
+  animation-delay: 16s; 
+}
+
+@keyframes imageAnimation { 
+  0% { 
+    opacity: 0; 
+    animation-timing-function: ease-in;
+  }
+  10% {
+    opacity: 1;
+    animation-timing-function: ease-out;
+  }
+  20% {
+    opacity: 1
+  }
+  30% {
+    opacity: 0
+  }
+}
+
+/* Older browser support - class added by modernizr */
+.no-cssanimations .slideshow li {
+	opacity: 1;
+}

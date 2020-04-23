@@ -1,0 +1,65 @@
+.band.full-bleed {
+    min-width: 100%;
+    max-width: 100%;
+}
+
+.band.full-bleed {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.band {
+    padding: 40px 0;
+    margin: 0 auto;
+    max-width: 1280px;
+}
+
+
+.vehicle-detail-band {
+    border-top: 1px solid #f3f3f3;
+    position: relative;
+    width: 100%;
+}
+
+.vehicle-detail-band__background {
+    overflow: hidden;
+    height: 295px;
+    position: relative;
+    margin-bottom: 150px;
+}
+
+.vehicle-detail-band__car {
+    width: 50%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50px;
+    margin: auto;
+}
+
+.vehicle-detail-band__image {
+    width: 100%;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#carinfo {
+    font-weight: 20;
+    font-size: 1.5rem;
+}
+
+.site-footer {
+  height: 50px;
+  width: 100%;
+  background-color: rgb(60,60,60);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
