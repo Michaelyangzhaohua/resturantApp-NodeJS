@@ -1,31 +1,40 @@
-<%- include ('partials/header') %>
+<% include partials/header %>
+<br>
+<br>
+<br>
 <div class="container">
-<h1> New movie </h1>
+	<h1> New Dish </h1>
 
 
-<form action="/videos" method="POST">
+	<form action="/menus" method="POST">
 
-<div class="form-group">
-	<input type="text" name="title" class="form-control" placeholder="title">
+		<div class="form-group">
+			<input type="text" name="name" class="form-control" placeholder = "Name">
+		</div>
+		<div class="form-group">
+			<input type="text" name="type" class="form-control" placeholder = "Type">
+		</div>
+		<div class="form-group">
+			<input type="text" name="price" class="form-control" placeholder = "Price">
+		</div>
+		<div class="form-group">
+			<input type="text" name="image" class="form-control" placeholder = "Image">
+		</div>
+		<div class="form-group">
+			<input type="text" name="inventory" class="form-control" placeholder = "Inventory">
+		</div>
+		 <div class="form-group">
+			<textarea name="description" class="form-control"  placeholder = "Description"></textarea>
+		</div>
+		<div class="form-group">
+			<button type="submit" class="btn btn-info" >Save</button>
+		</div>
+
+
+	</form>
+
+	<a href="/menus">Cancel</a>
+
 </div>
- <div class="form-group">
-	<input type="text" name="genre" class="form-control" placeholder="genre">
-</div>
-<div class="form-group">
-	<input type="text" name="image" class="form-control" placeholder="image name">
-</div>
- <div class="form-group">
-	<textarea name="desc" class="form-control" placeholder="description"></textarea>
-</div>
-<div class="form-group">
-	<button type="submit" class="btn btn-info" >Save</button>
-</div>
 
-
-</form>
-
-<a href="/">Cancel</a>
-
-</div>
-
-<%- include ('partials/footer') %>
+<% include partials/footer %>

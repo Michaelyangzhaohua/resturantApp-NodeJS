@@ -40,24 +40,24 @@ body {
 }
 
 .slideshow li:nth-child(1) { 
-  background-image: url(https://www.bmw.co.za/content/dam/bmw/marketZA/bmw_co_za/images/mainbanner/BMW_X3M_X4M_XXL_Banner.jpg);
+  background-image: url(../images/jakub-kapusnak-tEVisOXz26Y-unsplash.jpg);
     
 }
 .slideshow li:nth-child(2) { 
 
-  background-image: url(https://www.autotrader.com/content/dam/autotrader/integrated_ads/_ford/_may29_19/ford_f150_large_v2.jpg);
+  background-image: url(../images/jesse-ballantyne-1nqH8ax3B6Q-unsplash.jpg);
   animation-delay: 4s; 
 }
 .slideshow li:nth-child(3) { 
-  background-image: url(https://www.abt-sportsline.com/fileadmin/user_upload/ABT_RS6__Nogaro_Edition_Audi_RS6_tuning_Front_Felgen_blau.jpg);
+  background-image: url(../images/juliana-malta-5RzbK5Avpz8-unsplash.jpg);
   animation-delay: 8s; 
 }
 .slideshow li:nth-child(4) { 
-  background-image: url(https://postmediadriving.files.wordpress.com/2018/11/bentley-continental-gt-convertible-8.jpg);
+  background-image: url(../images/margherita-turrin-YUQEo7ajeLA-unsplash.jpg);
   animation-delay: 12s; 
 }
 .slideshow li:nth-child(5) { 
-  background-image: url(https://fsmedia.imgix.net/5a/87/fc/a2/73ed/4c53/9eee/e929f7259655/tesla-model-x.jpeg?rect=0%2C417%2C2500%2C1252&auto=format%2Ccompress&dpr=2&w=650);
+  background-image: url(../images/tomato-salad-with-olive-oil-1239312.jpg);
   animation-delay: 16s; 
 }
 
@@ -78,7 +78,8 @@ body {
   }
 }
 
-/* Older browser support - class added by modernizr */
+/* Older browser support - class added by modernizr 
 .no-cssanimations .slideshow li {
 	opacity: 1;
 }
+*/

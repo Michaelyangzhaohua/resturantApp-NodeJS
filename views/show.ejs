@@ -5,32 +5,33 @@
 <br>
 <br>
 <div class="container">
-<h1> Movie Details </h1>
+	<div style="text-align: center">
+		<h1> Menu Details </h1>
+		<img src="/images/<%= menus.image %>" />
+		<br>
+		<p>Name: <%= menus.name %></p>
+		<p>Price: $<%= menus.price %></p>
+		<p>Type: <%= menus.type %></p>
+		<p>Inventory: <%= menus.inventory %></p>
+		<p>Decription: <%= menus.description %></p>
+		<a class="btn btn-warning" href="/menus/<%= menus._id %>/edit" role="button">
+	Edit menus</a>
 
-<p><img src="/images/<%= menus.image %>" /></p>
-<p>Title: <%= menus.title %></p>
-<p>Genre: <%= menus.genre %></p>
-<p>Description: <%= menus.description %></p>
+
+		<form action="/menus/<%= menus._id %>?_method=DELETE" method="POST">
+
+			<button type="submit" class="btn btn-danger">Delete menus</button>
+
+		</form>
+
+		<p>
+			<a href="/menus">Back to List</a>
+		</p>
+	</div>
 
 
-<a class="btn btn-warning" href="/menus/<%= menus._id %>/edit" role="button">
-Edit menus</a>
-
-
-<form action="/menus/<%= menus._id %>?_method=DELETE" method="POST">
-
-<button type="submit" class="btn btn-danger">Delete menus</button>
-
-</form>
-
-<p>
-<a href="/">Back to List</a>
-</p>
 
 </div>
-<br>
-<br>
-<br>
 <br>
 <br>
 <% include partials/footer %>

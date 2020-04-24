@@ -14,8 +14,27 @@ var monk = require('monk');
 var db = monk('localhost:27017/restaurant');
 
 router.get('/', function(req, res, next) {
-  res.redirect('/menus');
+  res.render('landing');
 });
+router.get('/menus/new',function(req,res){
+	res.render('new');
+});
+/////insert a new dish
+router.post('/menus', function(req, res) {
+    var collection = db.get('menus');
+    collection.insert({
+    name: req.body.name,
+    image: req.body.image,
+    type: req.body.type,
+    price: parseFloat(req.body.price), 
+    description: req.body.description,
+    inventory: parseInt(req.body.inventory)
+    }, function(err, menu){
+        if (err) throw err;
+       res.redirect('/menus');
+    });
+});
+
 
 router.get('/menus/:id', function(req, res) {
 	var collection = db.get('menus');
@@ -84,11 +103,8 @@ router.get('/menus', async(req, res, next)=> {
 				res.render('index', { menus: menus});
 			});
 		}
-	}
-			  
-  
+	} 
 });
-
 
 
 ///menu edit page
@@ -112,7 +128,7 @@ router.put('/menus/:id', function(req, res) {
 						  price: parseFloat(req.body.price)} }).then((updatedDoc) => {});
 	res.redirect('/');
 });
-////delete the page
+////delete the menu
 router.delete('/menus/:id',function(req,res){
 	var collection = db.get('menus');
 	collection.remove({ _id: req.params.id }, function(err, menus){

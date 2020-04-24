@@ -6,9 +6,9 @@
   <p class="lead">This is a list of most popular cars</p>
   <hr class="my-4">
 
-  <%/* if(user && user.isAdmin) { %>
-     <a class="btn btn-info btn-lg" href="cars/new" role="button">Add a new car</a>
-   <% } */%>
+  <%# if(user && user.isAdmin) { %>
+     <a class="btn btn-info btn-lg" href="menus/new" role="button">Add a new dish</a>
+   <%# } %>
   <p> </p>
 
 
@@ -63,7 +63,7 @@
 
 					<div class="md-col-4" style="margin-left: 5%">
 						<a href="menus/<%= menu._id %>">
-							<img src="../images/<%= menu.image %>" style="width:290px; height:230px;"/>
+							<img src="../images/<%= menu.image %>" style="width:300px; height:300px;"/>
 						</a>
 
 						<div class="caption" style="text-align: center; font-size: 1.2rem">
@@ -89,4 +89,3 @@
 
 
 <% include partials/footer %>
-
