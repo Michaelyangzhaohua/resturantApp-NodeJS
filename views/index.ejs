@@ -35,7 +35,7 @@
 	<div class="row"> -->
 		<%/* menus.forEach(function(menu){ */%>
 			<!-- <div class="sm-col-3"> -->
-				<!-- <img src="images/<%# menu.image %>" style="width:200px; height:200px;" class="img-thumbnail"/> -->
+				<!-- <img src="images/<%# menu.image %>" style="width:290px; height:230px;" class="img-thumbnail"/> -->
 				<!-- <div class="caption"><a href="menus/<%# menu._id %>"><%# menu.name %></a></div> -->
 			<!-- </div> -->
 		<%/* }); */%>
@@ -47,35 +47,54 @@
 
 	<div class="row" id="menus-grid">
 		<% menus.forEach( menu => { %>
+				<!-- <%# if (user && user.isAdmin) {%> -->
+					<!-- <div class="md-col-4" style="margin-left: 5%"> -->
+						<!-- <a href="menus/<%# menu._id %>"> -->
+							<!-- <img src="../images/<%# menu.image %>" style="width:300px; height:300px;"/> -->
+						<!-- </a> -->
 
-			<!-- <%# if (user && user.isAdmin) {%> -->
-				<!-- <div class="md-col-4" style="margin-left: 5%"> -->
-					<!-- <a href="menus/<%# menu._id %>"> -->
-						<!-- <img src="../images/<%# menu.image %>" style="width:290px; height:230px;"/> -->
-					<!-- </a> -->
-
-					<!-- <div class="caption" style="text-align: center; font-size: 1.2rem" ><a href="menus/<%# menu._id %>"> <%# menu.model %></a></div> -->
-				<!-- </div> -->
-			<!-- <%# } else { %> -->
+						<!-- <div class="caption" style="text-align: center; font-size: 1.2rem" ><a href="menus/<%# menu._id %>"> <%# menu.model %></a></div> -->
+					<!-- </div> -->
+				<!-- <%# } else { %> -->
 
 
-				<% if (menu.inventory > 0) {%>
+					<% if (menu.inventory > 0) {%>
 
-					<div class="md-col-4" style="margin-left: 5%">
-						<a href="menus/<%= menu._id %>">
-							<img src="../images/<%= menu.image %>" style="width:300px; height:300px;"/>
-						</a>
+						<div class="md-col-4" style="margin-left: 5%">
+							<a href="menus/<%= menu._id %>">
+								<img src="../images/<%= menu.image %>" style="width:300px; height:300px;"/>
+							</a>
 
-						<div class="caption" style="text-align: center; font-size: 1.2rem">
-							<a href="menus/<%= menu._id %>"> <%= menu.name %></a>
+							<div class="caption" style="text-align: center; font-size: 1.2rem">
+								<a href="menus/<%= menu._id %>"> <%= menu.name %></a>
+							</div>
+							
 						</div>
-					</div>
-				<% } %>
-			<!-- <%# } %> -->
-
+					<% } %>
+				<!-- <%# } %> -->
 		<% }); %>
 	</div>
 </div>
+<br>
+<br>
+<div class="container" style="text-align: center; margin: auto">
+    <% if (currentPage ==1 && numOfPages>1) {%>
+      <%= parseInt(currentPage)  %> <span>   </span><a href="/menus?page=<%= parseInt(currentPage) + 1 %>"><i class="fas fa-chevron-right"></i></a>
+      
+    <%} else if(currentPage < numOfPages) { %>
+    <a href="/menus?page=<%= parseInt(currentPage) - 1 %>">
+        <i class="fas fa-chevron-left"></i></a>
+        <%= parseInt(currentPage)  %> <span>   </span>
+      <a href="/menus?page=<%= parseInt(currentPage) + 1 %>">
+          <i class="fas fa-chevron-right"></i></a>
+    <%} else if(currentPage == numOfPages && numOfPages > 1) { %>
+    <a href="/menus?page=<%= parseInt(currentPage) - 1 %>">
+        <i class="fas fa-chevron-left"></i></a>
+        <%= parseInt(currentPage)  %> <span>   </span>
+      
+    <% } %>
+</div>
+
 
 
 <br>

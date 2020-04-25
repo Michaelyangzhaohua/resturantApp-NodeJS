@@ -6,7 +6,7 @@ var MenusSchema = new mongoose.Schema({
    image:String,
    type:String,
    inventory:Number,
-   price:String,
+   price:Number,
 });
 
 // Account.plugin(passportLocalMongoose);

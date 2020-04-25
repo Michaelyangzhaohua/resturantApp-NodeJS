@@ -9,16 +9,14 @@ $('#menus-search').on('input', function() {
 
       
         $('#menus-grid').append(`
-        <div class="col-md-4 col-sm-6">
-          <div class="thumbnail">
+        <div class="md-col-4" style="margin-left: 5%">
           <a href="../../menus/${ menu._id }">
-            <img src="../images/${ menu.image }" style="width:290px; height:230px;"/>
+            <img src="../images/${ menu.image }" style="width:300px; height:300px;"/>
           </a>
             
-            <p style="text-align: center; font-size: 1.2rem">
+            <p class="caption" style="text-align: center; font-size: 1.2rem">
               <a href="../../menus/${ menu._id }" class="caption">${ menu.name }</a>
             </p>
-          </div>
         </div>
       `);
       

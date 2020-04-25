@@ -55,7 +55,11 @@ router.get('/menus/:id', function(req, res) {
 
 router.get('/menus', async(req, res, next)=> {
 	// const foundMenus =await Menus.find({})
+
+	var page = parseInt(req.query.page)||1;
 	var collection = db.get('menus');
+	var result = [];
+	var length = 0;
 
 
 	if(req.query.search && req.xhr) {
@@ -100,7 +104,20 @@ router.get('/menus', async(req, res, next)=> {
 		} else {
 			collection.find({}, function(err, menus){
 				if (err) throw err;
-				res.render('index', { menus: menus});
+        		length = menus.length;
+				for(var i = 6 * (page-1); i < 6*page; i++ ) {
+					if(i<length){
+
+            			result.push(menus[i]);
+					}
+        		}
+        		var maxPage = Math.ceil(length/6);
+				res.render('index', { 
+					menus: result,
+					currentPage:page,
+					numOfPages:maxPage,
+					numOfResults:menus.length
+				});
 			});
 		}
 	} 
@@ -126,14 +143,14 @@ router.put('/menus/:id', function(req, res) {
 						  inventory: parseInt(req.body.inventory),
 						  // inventory: req.body.inventory,
 						  price: parseFloat(req.body.price)} }).then((updatedDoc) => {});
-	res.redirect('/');
+	res.redirect('/menus');
 });
 ////delete the menu
 router.delete('/menus/:id',function(req,res){
 	var collection = db.get('menus');
 	collection.remove({ _id: req.params.id }, function(err, menus){
 		if (err) throw err;
-		res.redirect('/');
+		res.redirect('/menus');
 	});
 });
 
