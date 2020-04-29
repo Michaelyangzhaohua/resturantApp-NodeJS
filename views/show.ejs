@@ -15,14 +15,19 @@
 		<p>Inventory: <%= menus.inventory %></p>
 		<p>Decription: <%= menus.description %></p>
 		<a class="btn btn-warning" href="/menus/<%= menus._id %>/edit" role="button">
-	Edit menus</a>
+			Edit menus</a>
 
 
 		<form action="/menus/<%= menus._id %>?_method=DELETE" method="POST">
-
 			<button type="submit" class="btn btn-danger">Delete menus</button>
-
 		</form>
+
+		<% if(user){%>
+		<form style="display: inline" action="/<%= user._id %>/wishlist" method="POST">
+			<input name="like" id="like" value="<%= menus._id %>" type="hidden" /><br>
+			<button type="submit" class="btn btn-outline-info">Add to Wishlist</button>
+		</form>
+		<%}%>
 
 		<p>
 			<a href="/menus">Back to List</a>
