@@ -1,0 +1,19 @@
+<% include partials/header %>
+
+	<h1 style="text-align: center; margin-top: 70px;">User Login</h1>
+
+		<div style="width: 30%; margin: 25px auto;">
+
+			<form action="/login" method="POST">
+			  <div class="form-group">
+			    <input type="text" name="username" class="form-control" placeholder="Enter username">
+			  </div>
+			  <div class="form-group">
+			    <input type="password" name="password" class="form-control" placeholder="Password">
+			  </div>
+			  <button type="submit" class="btn btn-primary">Login</button>
+			  <a href="/register" type="submit" class="btn btn-primary">Register</a>
+			</form>
+		</div>
+
+<% include partials/footer %>

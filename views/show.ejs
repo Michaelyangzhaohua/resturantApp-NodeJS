@@ -14,13 +14,14 @@
 		<p>Type: <%= menus.type %></p>
 		<p>Inventory: <%= menus.inventory %></p>
 		<p>Decription: <%= menus.description %></p>
-		<a class="btn btn-warning" href="/menus/<%= menus._id %>/edit" role="button">
-			Edit menus</a>
 
+		<% if(user && user.isAdmin) { %>
+			<a class="btn btn-warning" href="/menus/<%= menus._id %>/edit" role="button">Edit menus</a>
 
-		<form action="/menus/<%= menus._id %>?_method=DELETE" method="POST">
-			<button type="submit" class="btn btn-danger">Delete menus</button>
-		</form>
+			<form action="/menus/<%= menus._id %>?_method=DELETE" method="POST">
+				<button type="submit" class="btn btn-danger">Delete menus</button>
+			</form>
+		<% } %>
 
 		<% if(user){%>
 		<form style="display: inline" action="/<%= user._id %>/wishlist" method="POST">

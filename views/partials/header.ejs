@@ -3,11 +3,8 @@
 <head>
 	<title>Gogo Rent</title>
 
-
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
 	<link rel="icon" type="image/gif" href="../images/favicon.png">
-
 	<link rel="stylesheet" href="/stylesheets/style.css">
 
 	<script 
@@ -15,39 +12,53 @@
 	  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" 
 	  crossorigin="anonymous"></script>
 
-
     <script src="/javascripts/usercheck.js" async defer></script>
 	<script src="/javascripts/search.js" async defer></script>
-
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcWhzcS0fRqtT4czOHzFBfbw4PqiIhnk4&libraries=places"></script>
 
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
-
 
 </head>
 
 
 
 <body>
-
-
 	<nav class="navbar navbar-default navbar-dark bg-dark navbar-expand-md fixed-top" >
-	  <a class="navbar-brand" href="/menus">Italian Restaurant</a>
+		<a class="navbar-brand" href="/menus">Italian Restaurant</a>
 
+	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="/menus">Home</a>
+				</li>
+			</ul>
 
+		  	<% if (!user) {%>
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="/login">Login</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/register">Register</a>
+					</li>
+				</ul> 
+		  	<% }%>
+	  
+		    <% if(user) { %>
+				<ul class="navbar-nav">
 
-
-
-
-
-
-	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-	    <ul class="navbar-nav mr-auto">
-	      <li class="nav-item active">
-	        <a class="nav-link" href="/menus">Home</a>
-	      </li>
-	    </ul>
-
-	  </div>
+					<li class="nav-item">
+						<a href="/<%= user._id %>/profile" class="nav-link">Hello <%= user.username %> </a>
+					</li>
+					<li class="nav-item">
+						<a href="/<%= user._id %>/wishlist" class="nav-link" style="margin: auto;">
+							<i class="fas fa-list-ol" ></i>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/logout">Logout</a>
+					</li>
+				</ul> 
+		    <% }%>
+	  	</div>
 	</nav>

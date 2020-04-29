@@ -1,8 +1,8 @@
 /* Executed on the server side. */
 var express = require('express');
 var router = express.Router();
-// var passport = require('passport');
-// var Account = require('../models/account');
+var passport = require('passport');
+var Account = require('../models/account');
 // var Order = require('../models/order');
 // var Menus = require('../models/menus');
 // var Wishlist = require('../models/wishlist');
@@ -13,13 +13,16 @@ function escapeRegex(text) {
 var monk = require('monk');
 var db = monk('localhost:27017/restaurant');
 
+//Landing Page
 router.get('/', function (req, res, next) {
 	res.render('landing');
 });
+
+//Add New Dish
 router.get('/menus/new', function (req, res) {
-	res.render('new');
+	res.render('new', {user : req.user});
 });
-/////insert a new dish
+//Home Page
 router.post('/menus', function (req, res) {
 	var collection = db.get('menus');
 	collection.insert({
@@ -35,7 +38,7 @@ router.post('/menus', function (req, res) {
 	});
 });
 
-
+//Details of One Dish
 router.get('/menus/:id', function (req, res) {
 	var collection = db.get('menus');
 	collection.findOne({ _id: req.params.id }, function (err, menus) {
@@ -43,16 +46,76 @@ router.get('/menus/:id', function (req, res) {
 		res.render('show', { menus: menus, user: req.user });
 	});
 });
-/////get main page
-// router.get('/menus', function(req, res) {
 
-// 	var collection = db.get('menus');
-// 	collection.find({}, function(err, menus){
-// 		if (err) throw err;
-// 	  	res.render('index', { menus: menus});
-// 	});
-// });
+//Register
+router.get('/register', function(req, res) {
+	if(req.query.username && req.xhr) {
+		console.log(req.query.username);
+		Account.findOne({username: req.query.username}, function(err, user){
+			if(err) {
+				console.log(err);
+			}
+			var message;
+			if(user) {
+				message = "user exists";
+			} else {
+				message= "user doesn't exist";
+			}
+			res.json({message: message});
+		});
+	}
+	else {
+		res.render('register', {user : req.user});
+	}
+});
+  
+router.post('/register', function(req, res) {
+	var newAccount = new Account({username: req.body.username});
+	if(req.body.username === "admin") {
+		newAccount.isAdmin = true;
+	}
+	Account.register(newAccount, req.body.password, function(err, account) {
+		if (err) {
+			console.log(err.message);
+			return res.redirect('/register');
+		}
 
+		passport.authenticate('local')(req, res, function () {
+			res.redirect('/menus');
+		});
+	});
+});
+  
+router.get('/login', function(req, res) {
+	res.render('login', { user : req.user });
+});
+  
+router.post("/login", passport.authenticate("local",{
+
+	successRedirect: "/menus",
+	failureRedirect: "/login",
+	}), function(req, res){
+ 
+});
+
+function isLoggedIn(req, res, next){
+	if(req.isAuthenticated()){
+		return next();
+	}
+	res.redirect("/login");
+	
+}
+  
+router.get('/logout', function(req, res) {
+	req.logout();
+	res.redirect('/menus');
+});
+  
+router.get('/ping', function(req, res){
+	res.send("pong!", 200);
+});
+
+//Search Engine
 router.get('/menus', async (req, res, next) => {
 	// const foundMenus =await Menus.find({})
 
@@ -116,7 +179,8 @@ router.get('/menus', async (req, res, next) => {
 					menus: result,
 					currentPage: page,
 					numOfPages: maxPage,
-					numOfResults: menus.length
+					numOfResults: menus.length,
+					user: req.user
 				});
 			});
 		}
@@ -124,15 +188,16 @@ router.get('/menus', async (req, res, next) => {
 });
 
 
-///menu edit page
+//Menu Edit Page
 router.get('/menus/:id/edit', function (req, res) {
 	var collection = db.get('menus');
 	collection.findOne({ _id: req.params.id }, function (err, menus) {
 		if (err) throw err;
-		res.render('edit', { menus: menus });
+		res.render('edit', { menus: menus, user : req.user });
 	});
 });
-////update the page
+
+//Update The Page
 router.put('/menus/:id', function (req, res) {
 	var collection = db.get('menus');
 	collection.findOneAndUpdate({ _id: req.params.id },
@@ -149,7 +214,8 @@ router.put('/menus/:id', function (req, res) {
 		}).then((updatedDoc) => { });
 	res.redirect('/menus');
 });
-////delete the menu
+
+//Delete The Menu
 router.delete('/menus/:id', function (req, res) {
 	var collection = db.get('menus');
 	collection.remove({ _id: req.params.id }, function (err, menus) {

@@ -1,33 +1,33 @@
 <% include partials/header %>
 
 <div class="jumbotron">
-  <br>
-  <h2 class="display-4" sytle="margin-top: 20">Welcome to Gogo Rent</h2>
-  <p class="lead">This is a list of most popular cars</p>
-  <hr class="my-4">
+	<br>
+	<h2 class="display-4" sytle="margin-top: 20">Welcome to Gogo Rent</h2>
+	<p class="lead">This is a list of most popular cars</p>
+	<hr class="my-4">
 
-  <%# if(user && user.isAdmin) { %>
-     <a class="btn btn-info btn-lg" href="menus/new" role="button">Add a new dish</a>
-   <%# } %>
-  <p> </p>
+	<% if(user && user.isAdmin) { %>
+		<a class="btn btn-info btn-lg" href="menus/new" role="button">Add a new dish</a>
+	<% } %>
+	<p> </p>
 
 
-  <br>
-	<form action="/menus" method="GET" class="form-inline" id="menus-search">
-		<div class="form-group">
-			<input type="text" name="search" placeholder="dish search..." class="form-control">
-			<select name="type" id="setected_type">
-				<option value="all">All</option>
-				<option value="FAMILY MEALS">FAMILY MEALS</option>
-				<option value="FIT BOWLS">FIT BOWLS</option>
-				<option value="PIADAS">PIADAS</option>
-				<option value="SALADS">SALADS</option>
-				<option value="STREET SIDES">STREET SIDES</option>
-				<option value="BEVERAGES">BEVERAGES</option>
-			</select>
-		</div>
-	</form>
-</div>
+	<br>
+		<form action="/menus" method="GET" class="form-inline" id="menus-search">
+			<div class="form-group">
+				<input type="text" name="search" placeholder="dish search..." class="form-control">
+				<select name="type" id="setected_type">
+					<option value="all">All</option>
+					<option value="FAMILY MEALS">FAMILY MEALS</option>
+					<option value="FIT BOWLS">FIT BOWLS</option>
+					<option value="PIADAS">PIADAS</option>
+					<option value="SALADS">SALADS</option>
+					<option value="STREET SIDES">STREET SIDES</option>
+					<option value="BEVERAGES">BEVERAGES</option>
+				</select>
+			</div>
+		</form>
+	</div>
 
 
 
