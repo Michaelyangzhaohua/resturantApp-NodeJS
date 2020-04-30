@@ -26,7 +26,8 @@
                             <p><strong>Inventory: </strong><%= wl.menuObject.inventory %>/day</p>
                         </div>
                         <form action="/<%= user._id%>/wishlist?_method=DELETE" method="POST">
-                            <input name="wlmenuid" id="wlmenuid" value="<%= wl.menuObject._id %>" type="hidden" /><br>
+                            <input name="wlmenuname" id="wlmenuname" value="<%= wl.menuObject.name %>" type="hidden" />
+                            <input name="wlusername" id="wlusername" value="<%= user.username %>" type="hidden" />
                             <button type="submit" class="btn btn-danger">Remove from Wishlist</button>
                         </form>
                     </div>

@@ -263,19 +263,12 @@ router.post('/:id/wishlist', function (req, res) {
 });
 // Delete from wishlist
 router.delete('/:id/wishlist', function (req, res) {
-	// TODO!!!
-
-	// var collection = db.get('wishlist');
-	// var wlmenuid = req.body.wlmenuid;
-	// var url = '/' + req.params.id + '/wishlist';
-
-	// Menus.findById(wlmenuid, function (err, foundMenu) {
-	// 	if (err) throw err;
-	// 	collection.remove({ userid: req.params.id, menuname: foundMenu.name }, function (err, wl) {
-	// 		if (err) throw err;
-	// 	});
-	// 	res.redirect(url);
-	// });
+	var wl_collection = db.get('wishlist');
+	var url = '/' + req.params.id + '/wishlist';
+	wl_collection.remove({ username: req.body.wlusername, menuname: req.body.wlmenuname }, function (err, wl) {
+		if (err) throw err;
+		res.redirect(url);
+	});
 });
 // Go to wishlist
 router.get('/:id/wishlist', function (req, res) {
@@ -359,34 +352,26 @@ router.post('/:id/cart', function (req, res) {
 });
 // Delete from the cart.
 router.delete('/:id/cart', function (req, res) {
-	// TODO!!!
+	var cart_collection = db.get('cart');
+	var url = '/' + req.params.id + '/cart';
+	var deduct = parseInt(req.body.quantity);
+	var query = { menuname: req.body.itemname, username: req.body.username };
 
-	// var cart_collection = db.get('cart');
-	// var itemid = req.body.itemid;
-	// var url = '/' + req.params.id + '/cart';
-	// var deduct = parseInt(req.body.quantity);
-
-	// Menus.findById(itemid, function (err, foundMenu) {
-	// 	if (err) throw err;
-	// 	cart_collection.findOne({ userid: req.user._id, menuObject: foundMenu }, function (err, result) {
-	// 		if (err) throw err;
-	// 		console.log(result);
-
-	// 		if (result.menucount > deduct) {
-	// 			cart_collection.findOneAndUpdate({ userid: req.user._id, menuObject: foundMenu }, {
-	// 				$inc: {
-	// 					menucount: (-1 * deduct)
-	// 				}
-	// 			}).then((updateDoc) => { });
-	// 		} else {
-	// 			cart_collection.remove({ userid: req.user._id, menuObject: foundMenu }, function (err, ans) {
-	// 				if (err) throw err;
-	// 			});
-	// 		}
-
-	// 		res.redirect(url);
-	// 	});
-	// });
+	cart_collection.findOne(query, function (err, result) {
+		if (err) throw err;
+		if (result.menucount > deduct) {
+			cart_collection.findOneAndUpdate(query, {
+				$inc: {
+					menucount: (-1 * deduct)
+				}
+			}).then((updateDoc) => { });
+		} else {
+			cart_collection.remove(query, function (err, ans) {
+				if (err) throw err;
+			});
+		}
+		res.redirect(url);
+	});
 });
 /**
  * Shopping cart: the end

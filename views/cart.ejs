@@ -31,9 +31,10 @@
                         </div>
                         <div class="col-md-6">
                             <form action="/<%= user._id%>/cart?_method=DELETE" method="POST">
-                                <input name="itemid" id="itemid" value="<%= item.menuObject._id %>" type="hidden" />
+                                <input name="itemname" id="itemname" value="<%= item.menuObject.name %>" type="hidden" />
+                                <input name="username" id="username" value="<%= user.username %>" type="hidden" />
                                 <button type="submit" class="btn btn-danger">Remove from cart</button>
-                                <input type="number" id="quantity" name="quantity" min="1" max="5" value="1">
+                                <input type="number" id="quantity" name="quantity" min="1" max="10" value="1">
                             </form>
                         </div>
                     </div>
@@ -43,6 +44,7 @@
     </div>
     <% }); %>
     <a href="/menus" type="submit" class="btn btn-primary">Back to Home</a>
+    <a href="/<%= user._id%>/checkout" type="submit" class="btn btn-success">Checkout</a>
 </div>
 
 <br><br><br>
