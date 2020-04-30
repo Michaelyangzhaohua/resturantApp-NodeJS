@@ -2,30 +2,31 @@
 <br><br><br>
 
 <div class="container">
-    <h1>Hello <%= user.username%></h1>
-    <h2>Here is your Wishlist</h2>
+    <h1>Hello <%= user.username%>!</h1>
+    <h2>Here is your wishlist</h2>
+    <hr>
 
     <% wishlists.forEach(function(wl){ %>
     <div class="card mb-3" style="width: 70%;">
         <div class="row no-gutters">
             <div class="col-md-4">
-                <a href="/menus/<%= wl.menu._id %>">
-                    <img class="card-img" src="/images/<%= wl.menu.image %>" style="width:180px; height:150px;" />
+                <a href="/menus/<%= wl.menuObject._id %>">
+                    <img class="card-img" src="/images/<%= wl.menuObject.image %>" style="width:180px; height:150px;" />
                 </a>
             </div>
             <div class="col-md-8">
                 <div class="card-body">
                     <div id="menuinfo" class="row align-items-center" style="font-size: 0.9rem">
                         <div class="col-md-6">
-                            <p><strong>Name: </strong><%= wl.menu.name %></p>
-                            <p><strong>Type: </strong><%= wl.menu.type %></p>
+                            <p><strong>Name: </strong><%= wl.menuObject.name %></p>
+                            <p><strong>Type: </strong><%= wl.menuObject.type %></p>
                         </div>
                         <div class="col-md-6">
-                            <p><strong>Price: </strong><%= wl.menu.price %></p>
-                            <p><strong>Inventory: </strong> $<%= wl.menu.inventory %>/day</p>
+                            <p><strong>Price: </strong>$<%= wl.menuObject.price %></p>
+                            <p><strong>Inventory: </strong><%= wl.menuObject.inventory %>/day</p>
                         </div>
                         <form action="/<%= user._id%>/wishlist?_method=DELETE" method="POST">
-                            <input name="wlmenuid" id="wlmenuid" value="<%= wl.menu._id %>" type="hidden" /><br>
+                            <input name="wlmenuid" id="wlmenuid" value="<%= wl.menuObject._id %>" type="hidden" /><br>
                             <button type="submit" class="btn btn-danger">Remove from Wishlist</button>
                         </form>
                     </div>

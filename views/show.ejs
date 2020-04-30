@@ -16,20 +16,40 @@
 		<p>Decription: <%= menus.description %></p>
 
 		<% if(user && user.isAdmin) { %>
-			<a class="btn btn-warning" href="/menus/<%= menus._id %>/edit" role="button">Edit menus</a>
-
-			<form action="/menus/<%= menus._id %>?_method=DELETE" method="POST">
-				<button type="submit" class="btn btn-danger">Delete menus</button>
-			</form>
+		<div class="forAdmin">
+			<div class="toEditMenu">
+				<form style="display: inline" action="/menus/<%= menus._id %>/edit" method="GET">
+					<button type="submit" class="btn btn-warning">Edit menus</button>
+				</form>
+			</div>
+			<br>
+			<div class="toDeleteMenu">
+				<form style="display: inline" action="/menus/<%= menus._id %>?_method=DELETE" method="POST">
+					<button type="submit" class="btn btn-danger">Delete menus</button>
+				</form>
+			</div>
+		</div>
 		<% } %>
 
-		<% if(user){%>
-		<form style="display: inline" action="/<%= user._id %>/wishlist" method="POST">
-			<input name="like" id="like" value="<%= menus._id %>" type="hidden" /><br>
-			<button type="submit" class="btn btn-outline-info">Add to Wishlist</button>
-		</form>
+		<% if(user && !user.isAdmin){%>
+		<div class="forcustomer">
+			<div class="toLikeAnItem">
+				<form style="display: inline" action="/<%= user._id %>/wishlist" method="POST">
+					<input name="like" id="like" value="<%= menus._id %>" type="hidden" /><br>
+					<button type="submit" class="btn btn-outline-info">Add to Wishlist</button>
+				</form>
+			</div>
+			<div class="toButAnItem">
+				<form style="display: inline" action="/<%= user._id %>/cart" method="POST">
+					<input name="buy" id="buy" value="<%= menus._id %>" type="hidden" /><br>
+					<button type="submit" class="btn btn-outline-primary">Add to shopping cart</button>
+					<input type="number" id="quantity" name="quantity" min="1" max="5" value="1">
+				</form>
+			</div>
+		</div>
 		<%}%>
 
+		<br>
 		<p>
 			<a href="/menus">Back to List</a>
 		</p>
