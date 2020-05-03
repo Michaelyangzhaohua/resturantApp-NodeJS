@@ -3,6 +3,7 @@ $('#menus-search').on('input', function() {
   if(search === "search=") {
     search = "all"
   }
+  $("#paging").css("display","none");
   $.get('/menus?' + search, function(data) {
     $('#menus-grid').html('');
     data.forEach(function(menu) {
@@ -28,3 +29,5 @@ $('#menus-search').on('input', function() {
 $('#menus-search').submit(function(event) {
   event.preventDefault();
 });
+
+

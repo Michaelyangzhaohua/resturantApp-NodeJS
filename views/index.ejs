@@ -77,7 +77,7 @@
 </div>
 <br>
 <br>
-<div class="container" style="text-align: center; margin: auto">
+<div class="container" id="paging" style="text-align: center; margin: auto">
     <% if (currentPage ==1 && numOfPages>1) {%>
       <%= parseInt(currentPage)  %> <span>   </span><a href="/menus?page=<%= parseInt(currentPage) + 1 %>"><i class="fas fa-chevron-right"></i></a>
       
