@@ -436,6 +436,7 @@ router.get('/:id/checkout', function (req, res) {
 //Success
 router.post('/:id/success', function (req, res) {
 	var cart_collection = db.get('cart');
+	var removedItems = [];
 
 	Account.findById(req.params.id, function (err, foundUser) {
 		if (err) {
