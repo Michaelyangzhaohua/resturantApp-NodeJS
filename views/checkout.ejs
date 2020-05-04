@@ -1,0 +1,46 @@
+<% include partials/header %>
+<br><br><br>
+
+<div class="container">
+    <h1>Hello <%= user.username%>!</h1>
+    <h2>Here is your shopping cart</h2>
+    <hr>
+
+    <% items.forEach(function(item){ %>
+    <div class="card mb-3" style="width: 70%;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <a href="/menus/<%= item.menuObject._id %>">
+                    <img class="card-img" src="/images/<%= item.menuObject.image %>"
+                        style="width:180px; height:150px;" />
+                </a>
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <div id="menuinfo" class="row align-items-center" style="font-size: 0.9rem">
+                        <div class="col-md-6">
+                            <p><strong>Name: </strong><%= item.menuObject.name %></p>
+                            <p><strong>Type: </strong><%= item.menuObject.type %></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Price: </strong>$<%= item.menuObject.price %></p>
+                            <p><strong>Inventory: </strong><%= item.menuObject.inventory %>/day</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Quantity: </strong><%= item.menucount %></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% }); %>
+    <form action="/<%= user._id%>/success" method="POST">
+        <input name="username" id="username" value="<%= user.username %>" type="hidden" />
+        <a href="/menus" type="submit" class="btn btn-primary">Cancel</a>
+        <button type="submit" class="btn btn-success">Confirm</button>
+    </form>
+</div>
+
+<br><br><br>
+<% include partials/footer %>

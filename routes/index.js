@@ -377,4 +377,41 @@ router.delete('/:id/cart', function (req, res) {
  * Shopping cart: the end
  ******************************************************************************************************/
 
+
+ // Go to order list
+router.get('/:id/checkout', function (req, res) {
+	var cart_collection = db.get('cart');
+
+	Account.findById(req.params.id, function (err, foundUser) {
+		if (err) {
+			res.redirect("/login");
+		}
+		cart_collection.find({ username: foundUser.username }, function (err, items) {
+			if (err) {
+				res.redirect("/menus");
+			}
+			res.render('checkout', { user: foundUser, items: items });
+		})
+	})
+});
+
+//Success
+router.post('/:id/success', function (req, res) {
+	var cart_collection = db.get('cart');
+
+	Account.findById(req.params.id, function (err, foundUser) {
+		if (err) {
+			res.redirect("/login");
+		}
+
+		cart_collection.remove({ username: foundUser.username }, function (err, items) {
+			if (err) {
+				throw err;
+			}
+			res.render('success', { user: foundUser});
+		})
+	});
+});
+
+
 module.exports = router;
