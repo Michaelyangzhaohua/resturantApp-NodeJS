@@ -12,7 +12,7 @@
             <div class="col-md-4">
                 <a href="/menus/<%= item.menuObject._id %>">
                     <img class="card-img" src="/images/<%= item.menuObject.image %>"
-                        style="width:180px; height:150px;" />
+                    style="width:204px; height:204px;" />
                 </a>
             </div>
             <div class="col-md-8">
@@ -30,11 +30,26 @@
                             <p><strong>Quantity: </strong><%= item.menucount %></p>
                         </div>
                         <div class="col-md-6">
-                            <form action="/<%= user._id%>/cart?_method=DELETE" method="POST">
+                            <form action="/<%= user._id%>/cart/remove" method="POST">
                                 <input name="itemname" id="itemname" value="<%= item.menuObject.name %>" type="hidden" />
                                 <input name="username" id="username" value="<%= user.username %>" type="hidden" />
-                                <button type="submit" class="btn btn-danger">Remove from cart</button>
-                                <input type="number" id="quantity" name="quantity" min="1" max="10" value="1">
+                                <button type="submit" class="btn btn-danger">Remove</button>
+                                <input type="number" id="removeQuantity" name="removeQuantity" min="1" max="10" value="1">
+                            </form>
+                        </div>
+                        <div class="col-md-6">
+                            <form action="/<%= user._id%>/cart/add" method="POST">
+                                <input name="itemname" id="itemname" value="<%= item.menuObject.name %>" type="hidden" />
+                                <input name="username" id="username" value="<%= user.username %>" type="hidden" />
+                                <button type="submit" class="btn btn-success">Add</button>
+                                <input type="number" id="addQuantity" name="addQuantity" min="1" max="10" value="1">
+                            </form>
+                        </div>
+                        <div class="col-md-6">
+                            <form action="/<%= user._id%>/cart/removeAll" method="POST">
+                                <input name="itemname" id="itemname" value="<%= item.menuObject.name %>" type="hidden" />
+                                <input name="username" id="username" value="<%= user.username %>" type="hidden" />
+                                <button type="submit" class="btn btn-danger">Remove All</button>
                             </form>
                         </div>
                     </div>

@@ -308,8 +308,8 @@ router.get('/:id/cart', function (req, res) {
 				res.redirect("/menus");
 			}
 			res.render("cart", { user: foundUser, items: items });
-		})
-	})
+		});
+	});
 });
 // Add to shopping cart
 router.post('/:id/cart', function (req, res) {
@@ -351,10 +351,10 @@ router.post('/:id/cart', function (req, res) {
 	});
 });
 // Delete from the cart.
-router.delete('/:id/cart', function (req, res) {
+router.post('/:id/cart/remove', function (req, res) {
 	var cart_collection = db.get('cart');
 	var url = '/' + req.params.id + '/cart';
-	var deduct = parseInt(req.body.quantity);
+	var deduct = parseInt(req.body.removeQuantity);
 	var query = { menuname: req.body.itemname, username: req.body.username };
 
 	cart_collection.findOne(query, function (err, result) {
@@ -373,14 +373,42 @@ router.delete('/:id/cart', function (req, res) {
 		res.redirect(url);
 	});
 });
+router.post('/:id/cart/removeAll', function (req, res) {
+	var cart_collection = db.get('cart');
+	var url = '/' + req.params.id + '/cart';
+	var query = { menuname: req.body.itemname, username: req.body.username };
+
+	cart_collection.remove(query, function (err, ans) {
+		if (err) throw err;
+		res.redirect(url);
+	});
+});
+// Add more from the cart.
+router.post('/:id/cart/add', function (req, res) {
+	var cart_collection = db.get('cart');
+	var url = '/' + req.params.id + '/cart';
+	var add = parseInt(req.body.addQuantity);
+	var query = { menuname: req.body.itemname, username: req.body.username };
+
+	cart_collection.findOne(query, function (err, result) {
+		if (err) throw err;
+		cart_collection.findOneAndUpdate(query, {
+			$inc: {
+				menucount: add
+			}
+		}).then((updateDoc) => { });
+		res.redirect(url);
+	});
+});
 /**
  * Shopping cart: the end
  ******************************************************************************************************/
 
 
- // Go to order list
+// Go to order list
 router.get('/:id/checkout', function (req, res) {
 	var cart_collection = db.get('cart');
+	var total = 0.0;
 
 	Account.findById(req.params.id, function (err, foundUser) {
 		if (err) {
@@ -390,9 +418,19 @@ router.get('/:id/checkout', function (req, res) {
 			if (err) {
 				res.redirect("/menus");
 			}
-			res.render('checkout', { user: foundUser, items: items });
-		})
-	})
+
+			for (var i = 0; i < items.length; i++) {
+				total += parseFloat(items[i].menucount) * parseFloat(items[i].menuObject.price);
+			}
+		});
+		cart_collection.find({ username: foundUser.username }, function (err, items) {
+			if (err) {
+				res.redirect("/menus");
+			}
+
+			res.render('checkout', { user: foundUser, items: items, total: total });
+		});
+	});
 });
 
 //Success
@@ -408,7 +446,7 @@ router.post('/:id/success', function (req, res) {
 			if (err) {
 				throw err;
 			}
-			res.render('success', { user: foundUser});
+			res.render('success', { user: foundUser });
 		})
 	});
 });

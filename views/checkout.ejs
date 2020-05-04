@@ -3,8 +3,9 @@
 
 <div class="container">
     <h1>Hello <%= user.username%>!</h1>
-    <h2>Here is your shopping cart</h2>
+    <h2>Please confirm your order</h2>
     <hr>
+    <p>Your total is: <strong>$<%= total%></strong>.</p>
 
     <% items.forEach(function(item){ %>
     <div class="card mb-3" style="width: 70%;">
@@ -12,7 +13,7 @@
             <div class="col-md-4">
                 <a href="/menus/<%= item.menuObject._id %>">
                     <img class="card-img" src="/images/<%= item.menuObject.image %>"
-                        style="width:180px; height:150px;" />
+                        style="width:204px; height:204px;" />
                 </a>
             </div>
             <div class="col-md-8">
