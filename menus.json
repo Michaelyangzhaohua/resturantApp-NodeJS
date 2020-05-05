@@ -1,15 +1,3 @@
-/* 1 */
-{
-    "_id" : ObjectId("5e9f718b4ccda1e2ec355728"),
-    "name" : "FAMILY SALAD",
-    "price" : 35.99,
-    "type" : "FAMILY MEALS",
-    "inventory" : 99,
-    "image" : "FAMILY SALAD.jpg",
-    "description" : "A pan of greens and six garlic doughs, and then choose your favorite protein, house-made dressings, and fresh toppings to build your own salads at home. Feeds 4-6 people"
-}
-
-/* 2 */
 {
     "_id" : ObjectId("5e9f71d84ccda1e2ec355735"),
     "name" : "FAMILY PIADAS",
@@ -17,10 +5,10 @@
     "type" : "FAMILY MEALS",
     "inventory" : 99,
     "image" : "FAMILY PIADAS.jpg",
-    "description" : "A Crispy Chicken BLT Piada, Grilled Chicken Avocado Piada, Sausage Chef's Favorite Piada, and Steak Tuscan Piada served with a pan of side salad. Feeds 4-6 people"
+    "description" : "A Crispy Chicken BLT Piada, Grilled Chicken Avocado Piada, Sausage Chef's Favorite Piada, and Steak Tuscan Piada served with a pan of side salad. Feeds 4-6 people",
+    "isDeleted" : false
 }
 
-/* 3 */
 {
     "_id" : ObjectId("5e9f721b4ccda1e2ec355746"),
     "name" : "CHICKEN ALFREDO TAKE & BAKE",
@@ -28,10 +16,10 @@
     "type" : "FAMILY MEALS",
     "inventory" : 99,
     "image" : "CHICKEN ALFREDO TAKE & BAKE.jpg",
-    "description" : "A pan of penne pasta with grilled chicken, alfredo sauce, roasted broccoli and parmesan cheese prepared for you to bake hot from your oven. Feeds 4-6 people"
+    "description" : "A pan of penne pasta with grilled chicken, alfredo sauce, roasted broccoli and parmesan cheese prepared for you to bake hot from your oven. Feeds 4-6 people",
+    "isDeleted" : false
 }
 
-/* 4 */
 {
     "_id" : ObjectId("5e9f72434ccda1e2ec35574f"),
     "name" : "MEATBALL TAKE & BAKE",
@@ -39,10 +27,10 @@
     "type" : "FAMILY MEALS",
     "inventory" : 99,
     "image" : "MEATBALL POMODORO TAKE & BAKE.jpg",
-    "description" : "A pan of penne pasta with meatballs, pomodoro sauce and parmesan cheese prepared for you to bake hot from your oven. Feeds 4-6 people"
+    "description" : "A pan of penne pasta with meatballs, pomodoro sauce and parmesan cheese prepared for you to bake hot from your oven. Feeds 4-6 people",
+    "isDeleted" : false
 }
 
-/* 5 */
 {
     "_id" : ObjectId("5e9f72844ccda1e2ec35575f"),
     "name" : "SAUSAGE DIAVOLO TAKE & BAKE",
@@ -50,10 +38,10 @@
     "type" : "FAMILY MEALS",
     "inventory" : 99,
     "image" : "SAUSAGE DIAVOLO TAKE & BAKE.jpg",
-    "description" : "A pan of penne pasta with Italian sausage, diavolo sauce, bruschetta tomatoes and parmesan cheese prepared for you to bake hot from your oven. Feeds 4-6 people"
+    "description" : "A pan of penne pasta with Italian sausage, diavolo sauce, bruschetta tomatoes and parmesan cheese prepared for you to bake hot from your oven. Feeds 4-6 people",
+    "isDeleted" : false
 }
 
-/* 6 */
 {
     "_id" : ObjectId("5e9f72b54ccda1e2ec355770"),
     "name" : "POWER BOWL TAKE & BAKE",
@@ -61,10 +49,10 @@
     "type" : "FAMILY MEALS",
     "inventory" : 99,
     "image" : "POWER BOWL TAKE & BAKE.jpg",
-    "description" : "A pan of our Power Bowl. Red quinoa, roasted broccoli, sweet corn & tomato, glazed chickpeas, pickled red onions, roasted carrots, yogurt harissa drizzle. Feeds 4-6 people"
+    "description" : "A pan of our Power Bowl. Red quinoa, roasted broccoli, sweet corn & tomato, glazed chickpeas, pickled red onions, roasted carrots, yogurt harissa drizzle. Feeds 4-6 people",
+    "isDeleted" : false
 }
 
-/* 7 */
 {
     "_id" : ObjectId("5e9f73014ccda1e2ec35577d"),
     "name" : "SUPER PROTEIN BOWL",
@@ -72,10 +60,10 @@
     "type" : "FIT BOWLS",
     "inventory" : "99",
     "image" : "SUPER PROTEIN BOWL.jpg",
-    "description" : "Sautéed zucchini & mushroom, roasted broccoli, basil pesto, mozzarella, bruschetta tomatoes. With grilled chicken, this bowl contains 47g of protein"
+    "description" : "Sautéed zucchini & mushroom, roasted broccoli, basil pesto, mozzarella, bruschetta tomatoes. With grilled chicken, this bowl contains 47g of protein",
+    "isDeleted" : false
 }
 
-/* 8 */
 {
     "_id" : ObjectId("5e9f73244ccda1e2ec355788"),
     "name" : "KETO BLT SALAD",
@@ -83,10 +71,10 @@
     "type" : "FIT BOWLS",
     "inventory" : "99",
     "image" : "KETO BLT SALAD.jpg",
-    "description" : "Romaine, bruschetta tomatoes, pancetta, mozzarella, creamy parmesan. Customization to this small-sized salad with our Keto-friendly toppings may make this dish fall outside of target macros"
+    "description" : "Romaine, bruschetta tomatoes, pancetta, mozzarella, creamy parmesan. Customization to this small-sized salad with our Keto-friendly toppings may make this dish fall outside of target macros",
+    "isDeleted" : false
 }
 
-/* 9 */
 {
     "_id" : ObjectId("5e9f734c4ccda1e2ec355794"),
     "name" : "PALEO BERRY BALSAMIC SALAD",
@@ -94,10 +82,10 @@
     "type" : "FIT BOWLS",
     "inventory" : "99",
     "image" : "PALEO BERRY BALSAMIC SALAD.jpg",
-    "description" : "Spinach, red cabbage, arugula, strawberries, fresh avocado, almonds, berry balsamic dressing. Make it your own with our available Paleo-approved toppings"
+    "description" : "Spinach, red cabbage, arugula, strawberries, fresh avocado, almonds, berry balsamic dressing. Make it your own with our available Paleo-approved toppings",
+    "isDeleted" : false
 }
 
-/* 10 */
 {
     "_id" : ObjectId("5e9f73b94ccda1e2ec3557a6"),
     "name" : "AVOCADO PIADA",
@@ -105,10 +93,10 @@
     "type" : "PIADAS",
     "inventory" : "99",
     "image" : "AVOCADO PIADA.jpg",
-    "description" : "Italian-style street wrap with pancetta (bacon), arugula, mozzarella, fresh avocado, sweet corn & tomato, basil aioli"
+    "description" : "Italian-style street wrap with pancetta (bacon), arugula, mozzarella, fresh avocado, sweet corn & tomato, basil aioli",
+    "isDeleted" : false
 }
 
-/* 11 */
 {
     "_id" : ObjectId("5e9f73d84ccda1e2ec3557b3"),
     "name" : "CRISPY CHICKEN BLT PIADA",
@@ -116,10 +104,10 @@
     "type" : "PIADAS",
     "inventory" : "99",
     "image" : "CRISPY CHICKEN BLT PIADA.jpg",
-    "description" : "Italian-style street wrap with pancetta (bacon), romaine, bruschetta tomatoes, creamy parmesan, basil aioli. Best with crispy chicken"
+    "description" : "Italian-style street wrap with pancetta (bacon), romaine, bruschetta tomatoes, creamy parmesan, basil aioli. Best with crispy chicken",
+    "isDeleted" : false
 }
 
-/* 12 */
 {
     "_id" : ObjectId("5e9f73f54ccda1e2ec3557bd"),
     "name" : "CHEF'S FAVORITE PIADA",
@@ -127,10 +115,10 @@
     "type" : "PIADAS",
     "inventory" : "99",
     "image" : "CHEF'S FAVORITE PIADA.jpg",
-    "description" : "Italian-style street wrap with spicy diavolo sauce, romaine, mozzarella, sweet peppers, spicy ranch"
+    "description" : "Italian-style street wrap with spicy diavolo sauce, romaine, mozzarella, sweet peppers, spicy ranch",
+    "isDeleted" : false
 }
 
-/* 13 */
 {
     "_id" : ObjectId("5e9f74294ccda1e2ec3557c6"),
     "name" : "DELUXE CAESAR",
@@ -138,10 +126,10 @@
     "type" : "SALADS",
     "inventory" : "99",
     "image" : "DELUXE CAESAR.jpg",
-    "description" : "Romaine, parmesan crisps, pancetta (bacon), grated parmesan, bruschetta tomatoes, Caesar dressing"
+    "description" : "Romaine, parmesan crisps, pancetta (bacon), grated parmesan, bruschetta tomatoes, Caesar dressing",
+    "isDeleted" : false
 }
 
-/* 14 */
 {
     "_id" : ObjectId("5e9f74ae4ccda1e2ec3557e4"),
     "name" : "POWER BOWL",
@@ -149,10 +137,10 @@
     "type" : "SALADS",
     "inventory" : "99",
     "image" : "POWER BOWL.jpg",
-    "description" : "Red quinoa, roasted broccoli, sweet corn & tomato, glazed chickpeas, pickled red onions, roasted carrots, yogurt harissa drizzle"
+    "description" : "Red quinoa, roasted broccoli, sweet corn & tomato, glazed chickpeas, pickled red onions, roasted carrots, yogurt harissa drizzle",
+    "isDeleted" : false
 }
 
-/* 15 */
 {
     "_id" : ObjectId("5e9f74ce4ccda1e2ec3557eb"),
     "name" : "THE FARMERS MARKET SALAD",
@@ -160,10 +148,10 @@
     "type" : "SALADS",
     "inventory" : "99",
     "image" : "THE FARMERS MARKET SALAD.jpg",
-    "description" : "Mixed greens, red cabbage, strawberries, feta, sweet corn & tomato, fresh avocado, spiced pecans, lemon-basil dressing"
+    "description" : "Mixed greens, red cabbage, strawberries, feta, sweet corn & tomato, fresh avocado, spiced pecans, lemon-basil dressing",
+    "isDeleted" : false
 }
 
-/* 16 */
 {
     "_id" : ObjectId("5e9f74eb4ccda1e2ec3557f5"),
     "name" : "CLASSIC CAESAR",
@@ -171,10 +159,10 @@
     "type" : "SALADS",
     "inventory" : "99",
     "image" : "CLASSIC CAESAR.jpg",
-    "description" : "Romaine, parmesan crisps, grated parmesan, Caesar dressing"
+    "description" : "Romaine, parmesan crisps, grated parmesan, Caesar dressing",
+    "isDeleted" : false
 }
 
-/* 17 */
 {
     "_id" : ObjectId("5e9f75634ccda1e2ec35580f"),
     "name" : "CARBONARA PASTA",
@@ -182,10 +170,10 @@
     "type" : "PASTAS",
     "inventory" : "99",
     "image" : "CARBONARA PASTA.jpg",
-    "description" : "Pasta, parmesan alfredo, bruschetta tomatoes, pancetta (bacon), spinach, grated parmesan"
+    "description" : "Pasta, parmesan alfredo, bruschetta tomatoes, pancetta (bacon), spinach, grated parmesan",
+    "isDeleted" : false
 }
 
-/* 18 */
 {
     "_id" : ObjectId("5e9f75804ccda1e2ec355816"),
     "name" : "BASIL PESTO PASTA",
@@ -193,10 +181,10 @@
     "type" : "PASTAS",
     "inventory" : "99",
     "image" : "BASIL PESTO PASTA.jpg",
-    "description" : "Pasta, parmesan alfredo, basil pesto, bruschetta tomatoes, grated parmesan"
+    "description" : "Pasta, parmesan alfredo, basil pesto, bruschetta tomatoes, grated parmesan",
+    "isDeleted" : false
 }
 
-/* 19 */
 {
     "_id" : ObjectId("5e9f75a04ccda1e2ec355820"),
     "name" : "DIAVOLO PASTA",
@@ -204,10 +192,10 @@
     "type" : "PASTAS",
     "inventory" : "99",
     "image" : "DIAVOLO PASTA.jpg",
-    "description" : "Pasta, spicy diavolo sauce, bruschetta tomatoes, chopped green onions, grated parmesan"
+    "description" : "Pasta, spicy diavolo sauce, bruschetta tomatoes, chopped green onions, grated parmesan",
+    "isDeleted" : false
 }
 
-/* 20 */
 {
     "_id" : ObjectId("5e9f75ed4ccda1e2ec355830"),
     "name" : "SWEET CORN SALAD",
@@ -215,10 +203,10 @@
     "type" : "STREET SIDES",
     "inventory" : "99",
     "image" : "SWEET CORN SALAD.jpg",
-    "description" : "Seasonal side with sweet corn, grape tomatoes, fresh basil, thyme, red onion, chili flake, paprika, lemon & olive oil"
+    "description" : "Seasonal side with sweet corn, grape tomatoes, fresh basil, thyme, red onion, chili flake, paprika, lemon & olive oil",
+    "isDeleted" : false
 }
 
-/* 21 */
 {
     "_id" : ObjectId("5e9f762e4ccda1e2ec355841"),
     "name" : "PEPPERONI PIADA STICK",
@@ -226,10 +214,10 @@
     "type" : "STREET SIDES",
     "inventory" : "99",
     "image" : "PEPPERONI PIADA STICK.jpg",
-    "description" : "Baked Piada dough with pepperoni, hand-rolled and served with creamy parmesan"
+    "description" : "Baked Piada dough with pepperoni, hand-rolled and served with creamy parmesan",
+    "isDeleted" : false
 }
 
-/* 22 */
 {
     "_id" : ObjectId("5e9f76574ccda1e2ec35584d"),
     "name" : "PARMESAN PIADA STICK",
@@ -237,10 +225,10 @@
     "type" : "STREET SIDES",
     "inventory" : "99",
     "image" : "PARMESAN PIADA STICK.jpg",
-    "description" : "Baked Piada dough with parmesan cheese, hand-rolled and served with creamy parmesan"
+    "description" : "Baked Piada dough with parmesan cheese, hand-rolled and served with creamy parmesan",
+    "isDeleted" : false
 }
 
-/* 23 */
 {
     "_id" : ObjectId("5e9f766e4ccda1e2ec355852"),
     "name" : "GARLIC DOUGH",
@@ -248,10 +236,10 @@
     "type" : "STREET SIDES",
     "inventory" : "99",
     "image" : "GARLIC DOUGH.jpg",
-    "description" : "Crispy, small Piada dough baked with mozzarella, garlic and extra virgin olive oil"
+    "description" : "Crispy, small Piada dough baked with mozzarella, garlic and extra virgin olive oil",
+    "isDeleted" : false
 }
 
-/* 24 */
 {
     "_id" : ObjectId("5e9f76944ccda1e2ec35585e"),
     "name" : "KETTLE CHIPS",
@@ -259,10 +247,10 @@
     "type" : "STREET SIDES",
     "inventory" : 99,
     "image" : "KETTLE CHIPS.jpg",
-    "description" : "Miss Vickie's kettle cooked potato chips seasoned with sea salt and made with Love & Care"
+    "description" : "Miss Vickie's kettle cooked potato chips seasoned with sea salt and made with Love & Care",
+    "isDeleted" : false
 }
 
-/* 25 */
 {
     "_id" : ObjectId("5e9f76b44ccda1e2ec355865"),
     "name" : "CUP OF LOBSTER BISQUE",
@@ -270,10 +258,10 @@
     "type" : "STREET SIDES",
     "inventory" : 99,
     "image" : "CUP OF LOBSTER BISQUE.jpg",
-    "description" : "Lobster and sweet sherry"
+    "description" : "Lobster and sweet sherry",
+    "isDeleted" : false
 }
 
-/* 26 */
 {
     "_id" : ObjectId("5e9f76e24ccda1e2ec355870"),
     "name" : "CALAMARI FRITTO MISTO",
@@ -281,10 +269,10 @@
     "type" : "STREET SIDES",
     "inventory" : 99,
     "image" : "CALAMARI FRITTO MISTO.jpg",
-    "description" : "Calamari fried with hot peppers and served with pomodoro dipping sauce"
+    "description" : "Calamari fried with hot peppers and served with pomodoro dipping sauce",
+    "isDeleted" : false
 }
 
-/* 27 */
 {
     "_id" : ObjectId("5e9f77074ccda1e2ec35587a"),
     "name" : "GRASS-FED MEATBALLS",
@@ -292,10 +280,10 @@
     "type" : "STREET SIDES",
     "inventory" : 99,
     "image" : "GRASS-FED MEATBALLS.jpg",
-    "description" : "Three all-beef meatballs rolled with Italian breadcrumbs and topped with pomodoro sauce and parmesan"
+    "description" : "Three all-beef meatballs rolled with Italian breadcrumbs and topped with pomodoro sauce and parmesan",
+    "isDeleted" : false
 }
 
-/* 28 */
 {
     "_id" : ObjectId("5e9f77304ccda1e2ec355883"),
     "name" : "ITALIAN SODAS AND TEAS",
@@ -303,10 +291,10 @@
     "type" : "BEVERAGES",
     "inventory" : 99,
     "image" : "ITALIAN SODAS AND TEAS.jpg",
-    "description" : "Choose from four recipes: Orange Soda, Berry soda, Peach Tea and Lemon Tea"
+    "description" : "Choose from four recipes: Orange Soda, Berry soda, Peach Tea and Lemon Tea",
+    "isDeleted" : false
 }
 
-/* 29 */
 {
     "_id" : ObjectId("5e9f77514ccda1e2ec355892"),
     "name" : "REGULAR SOFT DRINK",
@@ -314,10 +302,10 @@
     "type" : "BEVERAGES",
     "inventory" : 99,
     "image" : "REGULAR SOFT DRINK.jpg",
-    "description" : "Choose from a range of Pepsi products"
+    "description" : "Choose from a range of Pepsi products",
+    "isDeleted" : false
 }
 
-/* 30 */
 {
     "_id" : ObjectId("5e9f776e4ccda1e2ec355898"),
     "name" : "LARGE SOFT DRINK",
@@ -325,10 +313,10 @@
     "type" : "BEVERAGES",
     "inventory" : 99,
     "image" : "LARGE SOFT DRINK.jpg",
-    "description" : "Choose from a range of Pepsi products"
+    "description" : "Choose from a range of Pepsi products",
+    "isDeleted" : false
 }
 
-/* 31 */
 {
     "_id" : ObjectId("5e9f778e4ccda1e2ec3558a3"),
     "name" : "ACQUA PANNA SPRING WATER",
@@ -336,10 +324,10 @@
     "type" : "BEVERAGES",
     "inventory" : 99,
     "image" : "ACQUA PANNA SPRING WATER.jpg",
-    "description" : "Natural spring water bottled & imported from Tuscany"
+    "description" : "Natural spring water bottled & imported from Tuscany",
+    "isDeleted" : false
 }
 
-/* 32 */
 {
     "_id" : ObjectId("5e9f77af4ccda1e2ec3558a9"),
     "name" : "SAN PELLEGRINO SPARKLING WATER",
@@ -347,5 +335,6 @@
     "type" : "BEVERAGES",
     "inventory" : 99,
     "image" : "SAN PELLEGRINO SPARKLING WATER.jpg",
-    "description" : "Bottled sparkling water sourced from the foothills of the Italian Alps"
+    "description" : "Bottled sparkling water sourced from the foothills of the Italian Alps",
+    "isDeleted" : false
 }

@@ -20,16 +20,16 @@
                         <div class="col-md-6">
                             <p><strong>Name: </strong><%= wl.menuObject.name %></p>
                             <p><strong>Type: </strong><%= wl.menuObject.type %></p>
+                            <p><strong>Price: </strong>$<%= wl.menuObject.price %></p>
                         </div>
                         <div class="col-md-6">
-                            <p><strong>Price: </strong>$<%= wl.menuObject.price %></p>
-                            <p><strong>Inventory: </strong><%= wl.menuObject.inventory %>/day</p>
+                            <form action="/<%= user._id%>/wishlist?_method=DELETE" method="POST">
+                                <input name="wlmenuname" id="wlmenuname" value="<%= wl.menuObject.name %>"
+                                    type="hidden" />
+                                <input name="wlusername" id="wlusername" value="<%= user.username %>" type="hidden" />
+                                <button type="submit" class="btn btn-danger">Remove from Wishlist</button>
+                            </form>
                         </div>
-                        <form action="/<%= user._id%>/wishlist?_method=DELETE" method="POST">
-                            <input name="wlmenuname" id="wlmenuname" value="<%= wl.menuObject.name %>" type="hidden" />
-                            <input name="wlusername" id="wlusername" value="<%= user.username %>" type="hidden" />
-                            <button type="submit" class="btn btn-danger">Remove from Wishlist</button>
-                        </form>
                     </div>
                 </div>
             </div>

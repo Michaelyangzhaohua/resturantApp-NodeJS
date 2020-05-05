@@ -52,6 +52,7 @@
 							<i class="fas fa-user-circle"></i> <%= user.username %> 
 						</a>
 					</li>
+					<% if(!user.isAdmin) { %>
 					<li class="nav-item">
 						<a href="/<%= user._id %>/cart" class="nav-link">
 							<i class="fa fa-shopping-cart"></i> Cart
@@ -62,6 +63,7 @@
 							<i class="far fa-heart"></i> Wishlist
 						</a>						
 					</li>
+					<% }%>
 					<li class="nav-item">
 						<a href="/logout" class="nav-link">
 							<i class="fas fa-sign-out-alt"></i> Logout

@@ -1,0 +1,10 @@
+{
+    "_id" : ObjectId("5e9f718b4ccda1e2ec355728"),
+    "name" : "FAMILY SALAD",
+    "price" : 35.99,
+    "type" : "FAMILY MEALS",
+    "inventory" : 99,
+    "image" : "FAMILY SALAD.jpg",
+    "description" : "A pan of greens and six garlic doughs, and then choose your favorite protein, house-made dressings, and fresh toppings to build your own salads at home. Feeds 4-6 people",
+    "isDeleted" : false
+}

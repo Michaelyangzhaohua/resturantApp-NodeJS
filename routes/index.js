@@ -3,26 +3,28 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var Account = require('../models/account');
-// var Order = require('../models/order');
 var Menus = require('../models/menus');
+// var Order = require('../models/order');
 // var Wishlist = require('../models/wishlist');
 
 function escapeRegex(text) {
 	return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 };
+
 var monk = require('monk');
 var db = monk('localhost:27017/restaurant');
 
-//Landing Page
+// Landing Page
 router.get('/', function (req, res, next) {
 	res.render('landing');
 });
 
-//Add New Dish
+// "Add New Dish" form
 router.get('/menus/new', function (req, res) {
 	res.render('new', { user: req.user });
 });
-//Home Page
+
+// Add the new dish
 router.post('/menus', function (req, res) {
 	var collection = db.get('menus');
 	collection.insert({
@@ -31,14 +33,15 @@ router.post('/menus', function (req, res) {
 		type: req.body.type,
 		price: parseFloat(req.body.price),
 		description: req.body.description,
-		inventory: parseInt(req.body.inventory)
+		inventory: parseInt(req.body.inventory),
+		isDeleted: false
 	}, function (err, menu) {
 		if (err) throw err;
 		res.redirect('/menus');
 	});
 });
 
-//Details of One Dish
+// Details of one menu
 router.get('/menus/:id', function (req, res) {
 	var collection = db.get('menus');
 	collection.findOne({ _id: req.params.id }, function (err, menus) {
@@ -47,7 +50,7 @@ router.get('/menus/:id', function (req, res) {
 	});
 });
 
-//Register
+// To register
 router.get('/register', function (req, res) {
 	if (req.query.username && req.xhr) {
 		console.log(req.query.username);
@@ -69,6 +72,7 @@ router.get('/register', function (req, res) {
 	}
 });
 
+// Finish register
 router.post('/register', function (req, res) {
 	var newAccount = new Account({ username: req.body.username });
 	if (req.body.username === "admin") {
@@ -86,12 +90,13 @@ router.post('/register', function (req, res) {
 	});
 });
 
+// To login
 router.get('/login', function (req, res) {
 	res.render('login', { user: req.user });
 });
 
+// Finish login
 router.post("/login", passport.authenticate("local", {
-
 	successRedirect: "/menus",
 	failureRedirect: "/login",
 }), function (req, res) {
@@ -103,19 +108,15 @@ function isLoggedIn(req, res, next) {
 		return next();
 	}
 	res.redirect("/login");
-
 }
 
+// To logout
 router.get('/logout', function (req, res) {
 	req.logout();
 	res.redirect('/menus');
 });
 
-router.get('/ping', function (req, res) {
-	res.send("pong!", 200);
-});
-
-//Search Engine
+// Search engine
 router.get('/menus', async (req, res, next) => {
 	// const foundMenus =await Menus.find({})
 
@@ -124,24 +125,60 @@ router.get('/menus', async (req, res, next) => {
 	var result = [];
 	var length = 0;
 
-
 	if (req.query.search && req.xhr) {
-
 		if (req.query.type != "all") {
 			const regex = new RegExp(escapeRegex(req.query.search), 'gi');
 			var type = new RegExp(escapeRegex(req.query.type), 'gi');
-			collection.find({ name: regex, type: type }, function (err, menus) {
+			if (req.user && req.user.isAdmin) {
+				collection.find({ name: regex, type: type }, function (err, menus) {
+					if (err) {
+						console.log(err);
+					} else {
+						res.status(200).json(menus);
+					}
+				});
+			} else {
+				collection.find({ name: regex, type: type, isDeleted: false }, function (err, menus) {
+					if (err) {
+						console.log(err);
+					} else {
+						res.status(200).json(menus);
+					}
+				});
+			}
+		} else if (req.query.type == "all") {
+			const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+			var type = new RegExp(escapeRegex(req.query.type), 'gi');
+			if (req.user && req.user.isAdmin) {
+				collection.find({ name: regex }, function (err, menus) {
+					if (err) {
+						console.log(err);
+					} else {
+						res.status(200).json(menus);
+					}
+				});
+			} else {
+				collection.find({ name: regex, isDeleted: false }, function (err, menus) {
+					if (err) {
+						console.log(err);
+					} else {
+						res.status(200).json(menus);
+					}
+				});
+			}
+		}
+	} else if (req.query.search == "" && req.query.type != "all") {
+		var type = new RegExp(escapeRegex(req.query.type), 'gi');
+		if (req.user && req.user.isAdmin) {
+			collection.find({ type: type }, function (err, menus) {
 				if (err) {
 					console.log(err);
 				} else {
 					res.status(200).json(menus);
 				}
 			});
-		} else if (req.query.type == "all") {
-			// Get all campgrounds from DB
-			const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-			var type = new RegExp(escapeRegex(req.query.type), 'gi');
-			collection.find({ name: regex }, function (err, menus) {
+		} else {
+			collection.find({ type: type, isDeleted: false }, function (err, menus) {
 				if (err) {
 					console.log(err);
 				} else {
@@ -149,46 +186,62 @@ router.get('/menus', async (req, res, next) => {
 				}
 			});
 		}
-	} else if (req.query.search == "" && req.query.type != "all") {
-		var type = new RegExp(escapeRegex(req.query.type), 'gi');
-		collection.find({ type: type }, function (err, menus) {
-			if (err) {
-				console.log(err);
-			} else {
-				res.status(200).json(menus);
-			}
-		});
 	} else {
 		if (req.xhr) {
-			collection.find({}, function (err, menus) {
-				if (err) throw err;
-				res.status(200).json(menus);
-			});
-		} else {
-			collection.find({}, function (err, menus) {
-				if (err) throw err;
-				length = menus.length;
-				for (var i = 6 * (page - 1); i < 6 * page; i++) {
-					if (i < length) {
-
-						result.push(menus[i]);
-					}
-				}
-				var maxPage = Math.ceil(length / 6);
-				res.render('index', {
-					menus: result,
-					currentPage: page,
-					numOfPages: maxPage,
-					numOfResults: menus.length,
-					user: req.user
+			if (req.user && req.user.isAdmin) {
+				collection.find({}, function (err, menus) {
+					if (err) throw err;
+					res.status(200).json(menus);
 				});
-			});
+			} else {
+				collection.find({ isDeleted: false }, function (err, menus) {
+					if (err) throw err;
+					res.status(200).json(menus);
+				});
+			}
+		} else {
+			if (req.user && req.user.isAdmin) {
+				collection.find({}, function (err, menus) {
+					if (err) throw err;
+					length = menus.length;
+					for (var i = 6 * (page - 1); i < 6 * page; i++) {
+						if (i < length) {
+							result.push(menus[i]);
+						}
+					}
+					var maxPage = Math.ceil(length / 6);
+					res.render('index', {
+						menus: result,
+						currentPage: page,
+						numOfPages: maxPage,
+						numOfResults: menus.length,
+						user: req.user
+					});
+				});
+			} else {
+				collection.find({ isDeleted: false }, function (err, menus) {
+					if (err) throw err;
+					length = menus.length;
+					for (var i = 6 * (page - 1); i < 6 * page; i++) {
+						if (i < length) {
+							result.push(menus[i]);
+						}
+					}
+					var maxPage = Math.ceil(length / 6);
+					res.render('index', {
+						menus: result,
+						currentPage: page,
+						numOfPages: maxPage,
+						numOfResults: menus.length,
+						user: req.user
+					});
+				});
+			}
 		}
 	}
 });
 
-
-//Menu Edit Page
+// To edit a menu
 router.get('/menus/:id/edit', function (req, res) {
 	var collection = db.get('menus');
 	collection.findOne({ _id: req.params.id }, function (err, menus) {
@@ -197,33 +250,46 @@ router.get('/menus/:id/edit', function (req, res) {
 	});
 });
 
-//Update The Page
+// Update the page
 router.put('/menus/:id', function (req, res) {
 	var collection = db.get('menus');
-	collection.findOneAndUpdate({ _id: req.params.id },
-		{
-			$set: {
-				name: req.body.name,
-				description: req.body.description,
-				image: req.body.image,
-				type: req.body.type,
-				inventory: parseInt(req.body.inventory),
-				// inventory: req.body.inventory,
-				price: parseFloat(req.body.price)
-			}
-		}).then((updatedDoc) => { });
-	res.redirect('/menus');
+	var url = '/menus/' + req.params.id;
+	collection.findOneAndUpdate({ _id: req.params.id }, {
+		$set: {
+			name: req.body.name,
+			description: req.body.description,
+			image: req.body.image,
+			type: req.body.type,
+			inventory: parseInt(req.body.inventory),
+			price: parseFloat(req.body.price)
+		}
+	}).then((updatedDoc) => { });
+	res.redirect(url);
 });
 
-//Delete The Menu
-router.delete('/menus/:id', function (req, res) {
+// Delete the menu
+router.post('/menus/:id/delete', function (req, res) {
 	var collection = db.get('menus');
-	collection.remove({ _id: req.params.id }, function (err, menus) {
-		if (err) throw err;
-		res.redirect('/menus');
-	});
+	var url = '/menus/' + req.params.id;
+	collection.findOneAndUpdate({ _id: req.params.id }, {
+		$set: {
+			isDeleted: true
+		}
+	}).then((updatedDoc) => { });
+	res.redirect(url);
 });
 
+// Recover the menu
+router.post('/menus/:id/recover', function (req, res) {
+	var collection = db.get('menus');
+	var url = '/menus/' + req.params.id;
+	collection.findOneAndUpdate({ _id: req.params.id }, {
+		$set: {
+			isDeleted: false
+		}
+	}).then((updatedDoc) => { });
+	res.redirect(url);
+});
 
 /******************************************************************************************************
  * Wishlist: Yinglue's part
@@ -261,6 +327,7 @@ router.post('/:id/wishlist', function (req, res) {
 		});
 	});
 });
+
 // Delete from wishlist
 router.delete('/:id/wishlist', function (req, res) {
 	var wl_collection = db.get('wishlist');
@@ -270,6 +337,7 @@ router.delete('/:id/wishlist', function (req, res) {
 		res.redirect(url);
 	});
 });
+
 // Go to wishlist
 router.get('/:id/wishlist', function (req, res) {
 	var wl_collection = db.get('wishlist');
@@ -311,6 +379,7 @@ router.get('/:id/cart', function (req, res) {
 		});
 	});
 });
+
 // Add to shopping cart
 router.post('/:id/cart', function (req, res) {
 	var menus_collection = db.get('menus');
@@ -324,6 +393,7 @@ router.post('/:id/cart', function (req, res) {
 			menuObject: menu
 		}, function (err, result) {
 			if (err) throw err;
+			var url = '/menus/' + menu._id;
 			if (result) {
 				cart_collection.findOneAndUpdate({
 					userid: req.user._id,
@@ -333,7 +403,7 @@ router.post('/:id/cart', function (req, res) {
 						menucount: parseInt(req.body.quantity)
 					}
 				}).then((updateDoc) => { });
-				res.redirect('/menus');
+				res.redirect(url);
 			} else {
 				cart_collection.insert({
 					menuObject: menu,
@@ -344,12 +414,13 @@ router.post('/:id/cart', function (req, res) {
 					username: req.user.username
 				}, function (err, oneCartItem) {
 					if (err) throw err;
-					res.redirect('/menus');
+					res.redirect(url);
 				});
 			}
 		});
 	});
 });
+
 // Delete from the cart.
 router.post('/:id/cart/remove', function (req, res) {
 	var cart_collection = db.get('cart');
@@ -373,6 +444,8 @@ router.post('/:id/cart/remove', function (req, res) {
 		res.redirect(url);
 	});
 });
+
+// Delete all from shopping cart
 router.post('/:id/cart/removeAll', function (req, res) {
 	var cart_collection = db.get('cart');
 	var url = '/' + req.params.id + '/cart';
@@ -383,6 +456,7 @@ router.post('/:id/cart/removeAll', function (req, res) {
 		res.redirect(url);
 	});
 });
+
 // Add more from the cart.
 router.post('/:id/cart/add', function (req, res) {
 	var cart_collection = db.get('cart');
@@ -435,10 +509,12 @@ router.get('/:id/checkout', function (req, res) {
 		});
 	});
 });
+
 // Success.
 router.post('/:id/success', function (req, res) {
 	var cart_collection = db.get('cart');
 	var order_collection = db.get('orders');
+	var menus_collection = db.get('menus');
 
 	var timeStamp = new Date().toLocaleString();
 	var orderId = new Date().getTime().toFixed(0).toString();
@@ -460,6 +536,16 @@ router.post('/:id/success', function (req, res) {
 		cart_collection.find({ username: foundUser.username }, function (err, items) {
 			if (err) throw err;
 
+			// Removing coresponding items from inventory
+			for (var i = 0; i < items.length; i++) {
+				menus_collection.findOneAndUpdate({ name: items[i].menuname }, {
+					$inc: {
+						inventory: (-1 * items[i].menucount)
+					}
+				}).then((updateDoc) => { });
+			}
+
+			// Making the order object to put in the database
 			for (var i = 0; i < items.length; i++) {
 				var oneMenu = {
 					menuObject: items[i].menuObject,
@@ -470,7 +556,7 @@ router.post('/:id/success', function (req, res) {
 				oneOrder.menus.push(oneMenu);
 			}
 
-			order_collection.insert(oneOrder, function(err, records) {
+			order_collection.insert(oneOrder, function (err, records) {
 				if (err) throw err;
 			});
 		});
@@ -507,7 +593,7 @@ router.get('/:id/profile', function (req, res) {
 				for (var i = orders.length - 1; i >= 0; i--) {
 					sortedOrder.push(orders[i]);
 				}
-				res.render('profile', {user: foundUser, orders: sortedOrder});
+				res.render('profile', { user: foundUser, orders: sortedOrder });
 			});
 		} else {
 			order_collection.find({ username: foundUser.username }, function (err, orders) {
@@ -515,11 +601,12 @@ router.get('/:id/profile', function (req, res) {
 				for (var i = orders.length - 1; i >= 0; i--) {
 					sortedOrder.push(orders[i]);
 				}
-				res.render('profile', {user: foundUser, orders: sortedOrder});
+				res.render('profile', { user: foundUser, orders: sortedOrder });
 			});
 		}
 	});
 });
+
 // Get order detail.
 router.get('/:id/profile/:orderId', function (req, res) {
 	var order_collection = db.get('orders');
@@ -529,8 +616,8 @@ router.get('/:id/profile/:orderId', function (req, res) {
 			res.redirect("/login");
 		}
 
-		order_collection.findOne({_id: req.params.orderId}, function (err, oneOrder) {
-			res.render('orderdetail', {user: foundUser, order: oneOrder, items: oneOrder.menus});
+		order_collection.findOne({ _id: req.params.orderId }, function (err, oneOrder) {
+			res.render('orderdetail', { user: foundUser, order: oneOrder, items: oneOrder.menus });
 		});
 	});
 });

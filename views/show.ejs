@@ -23,11 +23,20 @@
 				</form>
 			</div>
 			<br>
+			<% if(!menus.isDeleted) { %>
 			<div class="toDeleteMenu">
-				<form style="display: inline" action="/menus/<%= menus._id %>?_method=DELETE" method="POST">
+				<form style="display: inline" action="/menus/<%= menus._id %>/delete" method="POST">
 					<button type="submit" class="btn btn-danger">Delete menus</button>
 				</form>
 			</div>
+			<% } %>
+			<% if(menus.isDeleted) { %>
+			<div class="toRecoverMenu">
+				<form style="display: inline" action="/menus/<%= menus._id %>/recover" method="POST">
+					<button type="submit" class="btn btn-info">Recover menus</button>
+				</form>
+			</div>
+			<% } %>
 		</div>
 		<% } %>
 
@@ -39,7 +48,7 @@
 					<button type="submit" class="btn btn-outline-info">Add to Wishlist</button>
 				</form>
 			</div>
-			<div class="toButAnItem">
+			<div class="toBuyAnItem">
 				<form style="display: inline" action="/<%= user._id %>/cart" method="POST">
 					<input name="buy" id="buy" value="<%= menus._id %>" type="hidden" /><br>
 					<button type="submit" class="btn btn-outline-primary">Add to shopping cart</button>
