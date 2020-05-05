@@ -3,7 +3,7 @@
 
 <div class="container">
     <h1>Hello <%= user.username%>!</h1>
-    <h2>Please confirm your order</h2>
+    <h2>Please confirm your order:</h2>
     <hr>
     <p>Your total is: <strong>$<%= total%></strong>.</p>
 
@@ -37,8 +37,8 @@
     </div>
     <% }); %>
     <form action="/<%= user._id%>/success" method="POST">
-        <input name="username" id="username" value="<%= user.username %>" type="hidden" />
-        <a href="/menus" type="submit" class="btn btn-primary">Cancel</a>
+        <input name="totalPrice" id="totalPrice" value="<%= total%>" type="hidden" />
+        <a href="/<%= user._id%>/cart" class="btn btn-primary">Cancel</a>
         <button type="submit" class="btn btn-success">Confirm</button>
     </form>
 </div>

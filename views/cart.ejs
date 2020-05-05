@@ -3,7 +3,7 @@
 
 <div class="container">
     <h1>Hello <%= user.username%>!</h1>
-    <h2>Here is your shopping cart</h2>
+    <h2>Your shopping cart:</h2>
     <hr>
 
     <% items.forEach(function(item){ %>
@@ -58,8 +58,8 @@
         </div>
     </div>
     <% }); %>
-    <a href="/menus" type="submit" class="btn btn-primary">Back to Home</a>
-    <a href="/<%= user._id%>/checkout" type="submit" class="btn btn-success">Checkout</a>
+    <a href="/menus" class="btn btn-primary">Back to Home</a>
+    <a href="/<%= user._id%>/checkout" class="btn btn-success">Checkout</a>
 </div>
 
 <br><br><br>

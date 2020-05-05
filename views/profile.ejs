@@ -1,0 +1,37 @@
+<% include partials/header %>
+<br><br><br>
+
+<div class="container">
+    <h1>Hello <%= user.username%>!</h1>
+    <% if(user && user.isAdmin) { %>
+        <h2>Here is the order history in the database.</h2>
+    <% } %>
+    <% if(user && !user.isAdmin) { %>		
+        <h2>Your order history:</h2>
+	<% } %>
+    <hr>
+
+    <% orders.forEach(function(order){ %>
+    <div class="card mb-3" style="width: 70%;">
+        <div class="row no-gutters">
+            <div class="card-body">
+                <div id="menuinfo" class="row align-items-center" style="font-size: 0.9rem">
+                    <div class="col-md-6">
+                        OrderID: <a href="/<%= user._id %>/profile/<%= order._id %>"><%= order.orderid %></a><br />
+                    </div>
+                    <div class="col-md-6">
+                        Time: <%= order.ordertime %><br />
+                    </div>
+                    <div class="col-md-6">
+                        Total price: $<%= order.totalPrice %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% }); %>
+
+</div>
+
+<br><br><br>
+<% include partials/footer %>

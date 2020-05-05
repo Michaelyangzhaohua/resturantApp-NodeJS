@@ -3,7 +3,7 @@
 
 <div class="container">
     <h1>Hello <%= user.username%>!</h1>
-    <h2>Here is your wishlist</h2>
+    <h2>Your wishlist:</h2>
     <hr>
 
     <% wishlists.forEach(function(wl){ %>
@@ -36,7 +36,7 @@
         </div>
     </div>
     <% }); %>
-    <a href="/menus" type="submit" class="btn btn-primary">Back to Home</a>
+    <a href="/menus" class="btn btn-primary">Back to Home</a>
 </div>
 
 <br><br><br>

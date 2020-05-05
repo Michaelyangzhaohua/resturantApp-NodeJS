@@ -404,8 +404,11 @@ router.post('/:id/cart/add', function (req, res) {
  * Shopping cart: the end
  ******************************************************************************************************/
 
-
-// Go to order list
+/******************************************************************************************************
+ * Checkout page
+ * ":id" is the user's id
+ */
+// Confirm page before checking out.
 router.get('/:id/checkout', function (req, res) {
 	var cart_collection = db.get('cart');
 	var total = 0.0;
@@ -428,20 +431,49 @@ router.get('/:id/checkout', function (req, res) {
 				res.redirect("/menus");
 			}
 
-			res.render('checkout', { user: foundUser, items: items, total: total });
+			res.render('checkout', { user: foundUser, items: items, total: total.toFixed(2) });
 		});
 	});
 });
-
-//Success
+// Success.
 router.post('/:id/success', function (req, res) {
 	var cart_collection = db.get('cart');
-	var removedItems = [];
+	var order_collection = db.get('orders');
+
+	var timeStamp = new Date().toLocaleString();
+	var orderId = new Date().getTime().toFixed(0).toString();
 
 	Account.findById(req.params.id, function (err, foundUser) {
 		if (err) {
 			res.redirect("/login");
 		}
+
+		var oneOrder = {
+			menus: [],
+			userid: req.params.id,
+			username: foundUser.username,
+			orderid: orderId,
+			ordertime: timeStamp,
+			totalPrice: req.body.totalPrice
+		};
+
+		cart_collection.find({ username: foundUser.username }, function (err, items) {
+			if (err) throw err;
+
+			for (var i = 0; i < items.length; i++) {
+				var oneMenu = {
+					menuObject: items[i].menuObject,
+					menuid: items[i].menuid,
+					menuname: items[i].menuname,
+					menucount: items[i].menucount,
+				};
+				oneOrder.menus.push(oneMenu);
+			}
+
+			order_collection.insert(oneOrder, function(err, records) {
+				if (err) throw err;
+			});
+		});
 
 		cart_collection.remove({ username: foundUser.username }, function (err, items) {
 			if (err) {
@@ -451,6 +483,58 @@ router.post('/:id/success', function (req, res) {
 		})
 	});
 });
+/**
+ * Checkout page: the end
+ ******************************************************************************************************/
 
+/******************************************************************************************************
+ * Profile page: Yinglue's part
+ * ":id" is the user's id
+ */
+// Get order history.
+router.get('/:id/profile', function (req, res) {
+	var order_collection = db.get('orders');
+	var sortedOrder = [];
 
+	Account.findById(req.params.id, function (err, foundUser) {
+		if (err) {
+			res.redirect("/login");
+		}
+
+		if (foundUser.isAdmin) {
+			order_collection.find({}, function (err, orders) {
+				if (err) throw err;
+				for (var i = orders.length - 1; i >= 0; i--) {
+					sortedOrder.push(orders[i]);
+				}
+				res.render('profile', {user: foundUser, orders: sortedOrder});
+			});
+		} else {
+			order_collection.find({ username: foundUser.username }, function (err, orders) {
+				if (err) throw err;
+				for (var i = orders.length - 1; i >= 0; i--) {
+					sortedOrder.push(orders[i]);
+				}
+				res.render('profile', {user: foundUser, orders: sortedOrder});
+			});
+		}
+	});
+});
+// Get order detail.
+router.get('/:id/profile/:orderId', function (req, res) {
+	var order_collection = db.get('orders');
+
+	Account.findById(req.params.id, function (err, foundUser) {
+		if (err) {
+			res.redirect("/login");
+		}
+
+		order_collection.findOne({_id: req.params.orderId}, function (err, oneOrder) {
+			res.render('orderdetail', {user: foundUser, order: oneOrder, items: oneOrder.menus});
+		});
+	});
+});
+/**
+ * Profile page: the end
+ ******************************************************************************************************/
 module.exports = router;

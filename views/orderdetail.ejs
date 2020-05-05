@@ -1,0 +1,50 @@
+<% include partials/header %>
+<br><br><br>
+
+<div class="container">
+    <h1>Hello <%= user.username%>!</h1>
+    <h2>OrderID: <%= order.orderid %></h2>
+    <hr>
+    <% if(user && !user.isAdmin) { %>
+        <p>Your total is: <strong>$<%= order.totalPrice %></strong>.</p>
+    <% } %>
+    <% if(user && user.isAdmin) { %>
+        <p>The user who made this order is: <strong><%= order.username %></strong>.</p>
+        <p>The total of this order is: <strong>$<%= order.totalPrice %></strong>.</p>
+	<% } %>
+
+    <% items.forEach(function(item){ %>
+        <div class="card mb-3" style="width: 70%;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <a href="/menus/<%= item.menuObject._id %>">
+                        <img class="card-img" src="/images/<%= item.menuObject.image %>"
+                        style="width:180px; height:180px;" />
+                    </a>
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <div id="menuinfo" class="row align-items-center" style="font-size: 0.9rem">
+                            <div class="col-md-6">
+                                <p><strong>Name: </strong><%= item.menuObject.name %></p>
+                                <p><strong>Type: </strong><%= item.menuObject.type %></p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Price: </strong>$<%= item.menuObject.price %></p>
+                                <p><strong>Inventory: </strong><%= item.menuObject.inventory %>/day</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Quantity: </strong><%= item.menucount %></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% }); %>
+    <a href="/menus" class="btn btn-primary">Back to Home</a>
+    <a href="/<%= user._id%>/profile" class="btn btn-primary">Back to profile</a>
+</div>
+
+<br><br><br>
+<% include partials/footer %>
