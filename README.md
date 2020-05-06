@@ -40,5 +40,5 @@ We already have a sample for you.  From `./Data For Testing/` folder, you can fi
 
 
 ## What else
-You can find some JSON dump files from our previous test run at `./MongoDB JSON Files/`.
-You can check our implementation timeline at `./WorkingProgress.md`.
+- You can find some JSON dump files from our previous test run at `./MongoDB JSON Files/`.
+- You can check our implementation timeline at `./WorkingProgress.md`.
