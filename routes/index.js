@@ -4,8 +4,6 @@ var router = express.Router();
 var passport = require('passport');
 var Account = require('../models/account');
 var Menus = require('../models/menus');
-// var Order = require('../models/order');
-// var Wishlist = require('../models/wishlist');
 
 function escapeRegex(text) {
 	return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
@@ -118,8 +116,6 @@ router.get('/logout', function (req, res) {
 
 // Search engine
 router.get('/menus', async (req, res, next) => {
-	// const foundMenus =await Menus.find({})
-
 	var page = parseInt(req.query.page) || 1;
 	var collection = db.get('menus');
 	var result = [];
@@ -387,35 +383,36 @@ router.post('/:id/cart', function (req, res) {
 
 	menus_collection.findOne({ _id: req.body.buy }, function (err, menu) {
 		if (err) throw err;
+		var url = '/menus/' + menu._id;
 
-		cart_collection.findOne({
-			userid: req.user._id,
-			menuObject: menu
-		}, function (err, result) {
+		cart_collection.findOne({ userid: req.user._id, menuObject: menu }, function (err, result) {
 			if (err) throw err;
-			var url = '/menus/' + menu._id;
 			if (result) {
-				cart_collection.findOneAndUpdate({
-					userid: req.user._id,
-					menuObject: menu
-				}, {
-					$inc: {
-						menucount: parseInt(req.body.quantity)
+				var inventory = parseInt(menu.inventory);
+				var originalMenucount = parseInt(result.menucount);
+				var add = parseInt(req.body.quantity);
+				cart_collection.findOneAndUpdate({ userid: req.user._id, menuObject: menu }, {
+					$set: {
+						menucount: (originalMenucount + add),
+						isEnough: ((originalMenucount + add) <= inventory)
 					}
 				}).then((updateDoc) => { });
 				res.redirect(url);
 			} else {
+				var inventory = parseInt(menu.inventory);
+				var menucount = parseInt(req.body.quantity);
 				cart_collection.insert({
 					menuObject: menu,
 					menuid: menu._id,
 					menuname: menu.name,
-					menucount: parseInt(req.body.quantity),
+					menucount: menucount,
 					userid: req.user._id,
-					username: req.user.username
+					username: req.user.username,
+					isEnough: (menucount <= inventory)
 				}, function (err, oneCartItem) {
 					if (err) throw err;
-					res.redirect(url);
 				});
+				res.redirect(url);
 			}
 		});
 	});
@@ -424,24 +421,33 @@ router.post('/:id/cart', function (req, res) {
 // Delete from the cart.
 router.post('/:id/cart/remove', function (req, res) {
 	var cart_collection = db.get('cart');
+	var menus_collection = db.get('menus');
 	var url = '/' + req.params.id + '/cart';
 	var deduct = parseInt(req.body.removeQuantity);
 	var query = { menuname: req.body.itemname, username: req.body.username };
 
-	cart_collection.findOne(query, function (err, result) {
-		if (err) throw err;
-		if (result.menucount > deduct) {
-			cart_collection.findOneAndUpdate(query, {
-				$inc: {
-					menucount: (-1 * deduct)
-				}
-			}).then((updateDoc) => { });
-		} else {
-			cart_collection.remove(query, function (err, ans) {
-				if (err) throw err;
-			});
-		}
-		res.redirect(url);
+	menus_collection.findOne({ name: req.body.itemname }, function (err, menu) {
+		cart_collection.findOne(query, function (err, result) {
+			if (err) throw err;
+
+			var inventory = parseInt(menu.inventory);
+			var originalMenucount = parseInt(result.menucount);
+
+			if (originalMenucount > deduct) {
+				cart_collection.findOneAndUpdate(query, {
+					$set: {
+						menucount: (originalMenucount - deduct),
+						isEnough: ((originalMenucount - deduct) <= inventory)
+					}
+				}).then((updateDoc) => { });
+				res.redirect(url);
+			} else {
+				cart_collection.remove(query, function (err, ans) {
+					if (err) throw err;
+				});
+				res.redirect(url);
+			}
+		});
 	});
 });
 
@@ -460,18 +466,26 @@ router.post('/:id/cart/removeAll', function (req, res) {
 // Add more from the cart.
 router.post('/:id/cart/add', function (req, res) {
 	var cart_collection = db.get('cart');
+	var menus_collection = db.get('menus');
 	var url = '/' + req.params.id + '/cart';
 	var add = parseInt(req.body.addQuantity);
 	var query = { menuname: req.body.itemname, username: req.body.username };
 
-	cart_collection.findOne(query, function (err, result) {
-		if (err) throw err;
-		cart_collection.findOneAndUpdate(query, {
-			$inc: {
-				menucount: add
-			}
-		}).then((updateDoc) => { });
-		res.redirect(url);
+	menus_collection.findOne({ name: req.body.itemname }, function (err, menu) {
+		cart_collection.findOne(query, function (err, result) {
+			if (err) throw err;
+
+			var inventory = parseInt(menu.inventory);
+			var originalMenucount = parseInt(result.menucount);
+
+			cart_collection.findOneAndUpdate(query, {
+				$set: {
+					menucount: (originalMenucount + add),
+					isEnough: ((originalMenucount + add) <= inventory)
+				}
+			}).then((updateDoc) => { });
+			res.redirect(url);
+		});
 	});
 });
 /**
@@ -484,13 +498,16 @@ router.post('/:id/cart/add', function (req, res) {
  */
 // Confirm page before checking out.
 router.get('/:id/checkout', function (req, res) {
+	var menu_collection = db.get('menus');
 	var cart_collection = db.get('cart');
 	var total = 0.0;
+	var canCheckout = true;
 
 	Account.findById(req.params.id, function (err, foundUser) {
 		if (err) {
 			res.redirect("/login");
 		}
+
 		cart_collection.find({ username: foundUser.username }, function (err, items) {
 			if (err) {
 				res.redirect("/menus");
@@ -498,14 +515,12 @@ router.get('/:id/checkout', function (req, res) {
 
 			for (var i = 0; i < items.length; i++) {
 				total += parseFloat(items[i].menucount) * parseFloat(items[i].menuObject.price);
-			}
-		});
-		cart_collection.find({ username: foundUser.username }, function (err, items) {
-			if (err) {
-				res.redirect("/menus");
+				if (!items[i].isEnough) {
+					canCheckout = false;
+				}
 			}
 
-			res.render('checkout', { user: foundUser, items: items, total: total.toFixed(2) });
+			res.render('checkout', { user: foundUser, items: items, total: total.toFixed(2), canCheckout: canCheckout });
 		});
 	});
 });

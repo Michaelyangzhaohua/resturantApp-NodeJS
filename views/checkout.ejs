@@ -25,11 +25,13 @@
                         </div>
                         <div class="col-md-6">
                             <p><strong>Price: </strong>$<%= item.menuObject.price %></p>
-                            <p><strong>Inventory: </strong><%= item.menuObject.inventory %>/day</p>
+                            <p><strong>Order Quantity: </strong><%= item.menucount %></p>
                         </div>
-                        <div class="col-md-6">
-                            <p><strong>Quantity: </strong><%= item.menucount %></p>
+                        <% if(!item.isEnough) { %>
+                        <div class="alert alert-danger" role="alert">
+                            <strong>The amount of the item is larger than our inventory.</strong>
                         </div>
+                        <% } %>
                     </div>
                 </div>
             </div>
@@ -38,8 +40,10 @@
     <% }); %>
     <form action="/<%= user._id%>/success" method="POST">
         <input name="totalPrice" id="totalPrice" value="<%= total%>" type="hidden" />
-        <a href="/<%= user._id%>/cart" class="btn btn-primary">Cancel</a>
+        <a href="/<%= user._id%>/cart" class="btn btn-primary">Back to cart</a>
+        <% if(canCheckout) { %>
         <button type="submit" class="btn btn-success">Confirm</button>
+        <% } %>
     </form>
 </div>
 

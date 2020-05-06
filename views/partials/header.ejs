@@ -1,39 +1,40 @@
- <! DOCTYPE html>
-<html>
-<head>
-	<title>PIADA IATLIAN FOOD</title>
+<! DOCTYPE html>
+	<html>
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	<link rel="shortcut icon" href=" /images/favicon.ico" />
-	<link rel="stylesheet" href="/stylesheets/style.css">
+	<head>
+		<title>PIADA ITALIAN FOOD</title>
 
-	<script 
-	  src="https://code.jquery.com/jquery-3.1.1.min.js" 
-	  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" 
-	  crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		<link rel="shortcut icon" href=" /images/favicon.ico" />
+		<link rel="stylesheet" href="/stylesheets/style.css">
 
-    <script src="/javascripts/usercheck.js" async defer></script>
-	<script src="/javascripts/search.js" async defer></script>
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcWhzcS0fRqtT4czOHzFBfbw4PqiIhnk4&libraries=places"></script>
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js"
+			integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+		<script src="/javascripts/usercheck.js" async defer></script>
+		<script src="/javascripts/search.js" async defer></script>
+		<script type="text/javascript"
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcWhzcS0fRqtT4czOHzFBfbw4PqiIhnk4&libraries=places"></script>
 
-</head>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+			integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+	</head>
 
 
 
-<body>
-	<nav class="navbar navbar-default navbar-dark bg-dark navbar-expand-md fixed-top" >
-		<a class="navbar-brand" href="/menus">Italian Restaurant</a>
+	<body>
+		<nav class="navbar navbar-default navbar-dark bg-dark navbar-expand-md fixed-top">
+			<a class="navbar-brand" href="/menus">Italian Restaurant</a>
 
-	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active">
-					<a class="nav-link" href="/menus">Home</a>
-				</li>
-			</ul>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="/menus">Home</a>
+					</li>
+				</ul>
 
-		  	<% if (!user) {%>
+				<% if (!user) {%>
 				<ul class="navbar-nav">
 					<li class="nav-item">
 						<a class="nav-link" href="/login">Login</a>
@@ -41,27 +42,27 @@
 					<li class="nav-item">
 						<a class="nav-link" href="/register">Register</a>
 					</li>
-				</ul> 
-		  	<% }%>
-	  
-		    <% if(user) { %>
+				</ul>
+				<% }%>
+
+				<% if(user) { %>
 				<ul class="navbar-nav">
 
 					<li class="nav-item">
 						<a href="/<%= user._id %>/profile" class="nav-link">
-							<i class="fas fa-user-circle"></i> <%= user.username %> 
+							<i class="fas fa-user-circle"></i> <%= user.username %>
 						</a>
 					</li>
 					<% if(!user.isAdmin) { %>
 					<li class="nav-item">
 						<a href="/<%= user._id %>/cart" class="nav-link">
 							<i class="fa fa-shopping-cart"></i> Cart
-						</a>					
+						</a>
 					</li>
 					<li class="nav-item">
 						<a href="/<%= user._id %>/wishlist" class="nav-link">
 							<i class="far fa-heart"></i> Wishlist
-						</a>						
+						</a>
 					</li>
 					<% }%>
 					<li class="nav-item">
@@ -69,7 +70,7 @@
 							<i class="fas fa-sign-out-alt"></i> Logout
 						</a>
 					</li>
-				</ul> 
-		    <% }%>
-	  	</div>
-	</nav>
+				</ul>
+				<% }%>
+			</div>
+		</nav>
