@@ -27,7 +27,7 @@ $ cd resturantApp-NodeJS/
 $ npm install
 $ nodemon
 ```
-After typing these commands in the terminal, you will be able to try our application from [here](localhost:3000 "Home page").
+After typing these commands in the terminal, you will be able to try our application from `localhost:3000`.
 
 ### Set up an administrator account
 After the registration, by default the account will be a normal account. To obtain administrator's permission, the only way would be changing the `isAdmin` property from the `accounts` table.
