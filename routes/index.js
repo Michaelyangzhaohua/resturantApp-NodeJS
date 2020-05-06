@@ -268,23 +268,27 @@ router.get("/menus/:id/edit", function (req, res) {
 // Update the page
 router.put("/menus/:id", function (req, res) {
 	var collection = db.get("menus");
+	var form = new formidable.IncomingForm();
 	var url = "/menus/" + req.params.id;
-	collection
-		.findOneAndUpdate(
-			{ _id: req.params.id },
-			{
-				$set: {
-					name: req.body.name,
-					description: req.body.description,
-					image: req.body.image,
-					type: req.body.type,
-					inventory: parseInt(req.body.inventory),
-					price: parseFloat(req.body.price),
-				},
-			}
-		)
-		.then((updatedDoc) => { });
-	res.redirect(url);
+
+	form.parse(req, function (err, fields, files) {
+		var oldpath = files.file.path;
+		var newpath = 'public/images/' + files.file.name;
+		fs.rename(oldpath, newpath, function (err) {
+			if (err) throw err;
+		});
+		collection.findOneAndUpdate({ _id: req.params.id }, {
+			$set: {
+				name: fields.name,
+				image: files.file.name,
+				type: fields.type,
+				price: parseFloat(parseFloat(fields.price).toFixed(2)),
+				description: fields.description,
+				inventory: parseInt(fields.inventory),
+			},
+		}).then((updatedDoc) => { });
+		res.redirect(url);
+	});
 });
 
 // Delete the menu
