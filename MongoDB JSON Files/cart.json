@@ -1,0 +1,41 @@
+/* 1 */
+{
+    "_id" : ObjectId("5eb25b763294ae3607239b55"),
+    "menuObject" : {
+        "_id" : ObjectId("5e9f72b54ccda1e2ec355770"),
+        "name" : "POWER BOWL TAKE & BAKE",
+        "price" : 30.99,
+        "type" : "FAMILY MEALS",
+        "inventory" : 99,
+        "image" : "POWER BOWL TAKE & BAKE.jpg",
+        "description" : "A pan of our Power Bowl. Red quinoa, roasted broccoli, sweet corn & tomato, glazed chickpeas, pickled red onions, roasted carrots, yogurt harissa drizzle. Feeds 4-6 people",
+        "isDeleted" : false
+    },
+    "menuid" : ObjectId("5e9f72b54ccda1e2ec355770"),
+    "menuname" : "POWER BOWL TAKE & BAKE",
+    "menucount" : 1,
+    "userid" : ObjectId("5eb0dfc34351c23bcb33557d"),
+    "username" : "qwer",
+    "isEnough" : true
+}
+
+/* 2 */
+{
+    "_id" : ObjectId("5eb25b993294ae3607239b56"),
+    "menuObject" : {
+        "_id" : ObjectId("5e9f73014ccda1e2ec35577d"),
+        "name" : "SUPER PROTEIN BOWL",
+        "price" : "8.99",
+        "type" : "FIT BOWLS",
+        "inventory" : "99",
+        "image" : "SUPER PROTEIN BOWL.jpg",
+        "description" : "Sautéed zucchini & mushroom, roasted broccoli, basil pesto, mozzarella, bruschetta tomatoes. With grilled chicken, this bowl contains 47g of protein",
+        "isDeleted" : false
+    },
+    "menuid" : ObjectId("5e9f73014ccda1e2ec35577d"),
+    "menuname" : "SUPER PROTEIN BOWL",
+    "menucount" : 3,
+    "userid" : ObjectId("5eb0ca262d94d32a9757dee7"),
+    "username" : "qwerqwer",
+    "isEnough" : true
+}

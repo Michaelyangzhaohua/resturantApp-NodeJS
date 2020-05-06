@@ -1,40 +1,44 @@
 <% include partials/header %>
-<br>
-<br>
-<br>
+<br />
+<br />
+<br />
 <div class="container">
-	<h1> New Dish </h1>
+	<h1>New Dish</h1>
 
-
-	<form action="/menus" method="POST">
-
+	<form action="/menus" method="POST" enctype="multipart/form-data">
 		<div class="form-group">
-			<input type="text" name="name" class="form-control" placeholder = "Name">
+			<input type="text" name="name" class="form-control" placeholder="Name (e.g., &quot;FAMILY PIADAS&quot;)" />
 		</div>
 		<div class="form-group">
-			<input type="text" name="type" class="form-control" placeholder = "Type">
+			<input type="text" name="type" class="form-control" placeholder="Type (e.g., &quot;FAMILY MEALS&quot;)" />
 		</div>
 		<div class="form-group">
-			<input type="text" name="price" class="form-control" placeholder = "Price">
+			<input type="text" name="price" class="form-control" placeholder="Price (e.g., &quot;19.99&quot;)" />
+		</div>
+		<div class="custom-file mb-3">
+			<input type="file" id="file" name="file" class="custom-file-input">
+			<label class="custom-file-label" for="customFile">Select an image file for the new dish.</label>
 		</div>
 		<div class="form-group">
-			<input type="text" name="image" class="form-control" placeholder = "Image">
+			<input type="text" name="inventory" class="form-control" placeholder="Inventory (e.g., &quot;20&quot;)" />
 		</div>
 		<div class="form-group">
-			<input type="text" name="inventory" class="form-control" placeholder = "Inventory">
-		</div>
-		 <div class="form-group">
-			<textarea name="description" class="form-control"  placeholder = "Description"></textarea>
+			<textarea name="description" class="form-control" placeholder="Description"></textarea>
 		</div>
 		<div class="form-group">
-			<button type="submit" class="btn btn-info" >Save</button>
+			<button type="submit" class="btn btn-info">Save</button>
 		</div>
-
-
 	</form>
 
 	<a href="/menus">Cancel</a>
-
 </div>
+
+<script>
+	// Add the following code if you want the name of the file appear on select
+	$(".custom-file-input").on("change", function () {
+		var fileName = $(this).val().split("\\").pop();
+		$(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+	});
+</script>
 
 <% include partials/footer %>

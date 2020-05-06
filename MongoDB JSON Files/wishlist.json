@@ -1,0 +1,37 @@
+/* 1 */
+{
+    "_id" : ObjectId("5eb258f06cf7043276793f31"),
+    "menuObject" : {
+        "_id" : ObjectId("5e9f71d84ccda1e2ec355735"),
+        "name" : "FAMILY PIADAS",
+        "price" : 35.99,
+        "type" : "FAMILY MEALS",
+        "inventory" : 199,
+        "image" : "FAMILY PIADAS.jpg",
+        "description" : "A Crispy Chicken BLT Piada, Grilled Chicken Avocado Piada, Sausage Chef's Favorite Piada, and Steak Tuscan Piada served with a pan of side salad. Feeds 4-6 people",
+        "isDeleted" : false
+    },
+    "menuid" : ObjectId("5e9f71d84ccda1e2ec355735"),
+    "menuname" : "FAMILY PIADAS",
+    "userid" : ObjectId("5eb0ca262d94d32a9757dee7"),
+    "username" : "qwerqwer"
+}
+
+/* 2 */
+{
+    "_id" : ObjectId("5eb258f36cf7043276793f32"),
+    "menuObject" : {
+        "_id" : ObjectId("5e9f71d84ccda1e2ec355735"),
+        "name" : "FAMILY PIADAS",
+        "price" : 35.99,
+        "type" : "FAMILY MEALS",
+        "inventory" : 199,
+        "image" : "FAMILY PIADAS.jpg",
+        "description" : "A Crispy Chicken BLT Piada, Grilled Chicken Avocado Piada, Sausage Chef's Favorite Piada, and Steak Tuscan Piada served with a pan of side salad. Feeds 4-6 people",
+        "isDeleted" : false
+    },
+    "menuid" : ObjectId("5e9f71d84ccda1e2ec355735"),
+    "menuname" : "FAMILY PIADAS",
+    "userid" : ObjectId("5eb0dfc34351c23bcb33557d"),
+    "username" : "qwer"
+}

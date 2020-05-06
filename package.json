@@ -11,6 +11,7 @@
     "ejs": "^2.7.4",
     "express": "~4.16.1",
     "express-session": "^1.17.0",
+    "formidable": "^1.2.2",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
     "jw-paginate": "^1.0.4",

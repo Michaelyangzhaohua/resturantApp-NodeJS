@@ -1,0 +1,110 @@
+/* 1 */
+{
+    "_id" : ObjectId("5eb259986cf7043276793f36"),
+    "menus" : [ 
+        {
+            "menuObject" : {
+                "_id" : ObjectId("5eb259386cf7043276793f33"),
+                "name" : "FAMILY SALAD",
+                "image" : "FAMILY SALAD.jpg",
+                "type" : "FAMILY MEALS",
+                "price" : 35.99,
+                "description" : "A pan of greens and six garlic doughs, and then choose your favorite protein, house-made dressings, and fresh toppings to build your own salads at home. Feeds 4-6 people",
+                "inventory" : 5,
+                "isDeleted" : false
+            },
+            "menuid" : ObjectId("5eb259386cf7043276793f33"),
+            "menuname" : "FAMILY SALAD",
+            "menucount" : 4
+        }, 
+        {
+            "menuObject" : {
+                "_id" : ObjectId("5e9f721b4ccda1e2ec355746"),
+                "name" : "CHICKEN ALFREDO TAKE & BAKE",
+                "price" : 25.99,
+                "type" : "FAMILY MEALS",
+                "inventory" : 99,
+                "image" : "CHICKEN ALFREDO TAKE & BAKE.jpg",
+                "description" : "A pan of penne pasta with grilled chicken, alfredo sauce, roasted broccoli and parmesan cheese prepared for you to bake hot from your oven. Feeds 4-6 people",
+                "isDeleted" : false
+            },
+            "menuid" : ObjectId("5e9f721b4ccda1e2ec355746"),
+            "menuname" : "CHICKEN ALFREDO TAKE & BAKE",
+            "menucount" : 1
+        }
+    ],
+    "userid" : "5eb0dfc34351c23bcb33557d",
+    "username" : "qwer",
+    "orderid" : "1588746648510",
+    "ordertime" : "5/6/2020, 1:30:48 AM",
+    "totalPrice" : "169.95"
+}
+
+/* 2 */
+{
+    "_id" : ObjectId("5eb25a306cf7043276793f3b"),
+    "menus" : [ 
+        {
+            "menuObject" : {
+                "_id" : ObjectId("5eb259386cf7043276793f33"),
+                "name" : "FAMILY SALAD",
+                "image" : "FAMILY SALAD.jpg",
+                "type" : "FAMILY MEALS",
+                "price" : 35.99,
+                "description" : "A pan of greens and six garlic doughs, and then choose your favorite protein, house-made dressings, and fresh toppings to build your own salads at home. Feeds 4-6 people",
+                "inventory" : 1,
+                "isDeleted" : false
+            },
+            "menuid" : ObjectId("5eb259386cf7043276793f33"),
+            "menuname" : "FAMILY SALAD",
+            "menucount" : 1
+        }
+    ],
+    "userid" : "5eb0dfc34351c23bcb33557d",
+    "username" : "qwer",
+    "orderid" : "1588746800591",
+    "ordertime" : "5/6/2020, 1:33:20 AM",
+    "totalPrice" : "35.99"
+}
+
+/* 3 */
+{
+    "_id" : ObjectId("5eb25ae26cf7043276793f3e"),
+    "menus" : [ 
+        {
+            "menuObject" : {
+                "_id" : ObjectId("5eb259386cf7043276793f33"),
+                "name" : "FAMILY SALAD",
+                "image" : "FAMILY SALAD.jpg",
+                "type" : "FAMILY MEALS",
+                "price" : 35.99,
+                "description" : "A pan of greens and six garlic doughs, and then choose your favorite protein, house-made dressings, and fresh toppings to build your own salads at home. Feeds 4-6 people",
+                "inventory" : 1,
+                "isDeleted" : false
+            },
+            "menuid" : ObjectId("5eb259386cf7043276793f33"),
+            "menuname" : "FAMILY SALAD",
+            "menucount" : 1
+        }, 
+        {
+            "menuObject" : {
+                "_id" : ObjectId("5e9f72844ccda1e2ec35575f"),
+                "name" : "SAUSAGE DIAVOLO TAKE & BAKE",
+                "price" : 27.99,
+                "type" : "FAMILY MEALS",
+                "inventory" : 99,
+                "image" : "SAUSAGE DIAVOLO TAKE & BAKE.jpg",
+                "description" : "A pan of penne pasta with Italian sausage, diavolo sauce, bruschetta tomatoes and parmesan cheese prepared for you to bake hot from your oven. Feeds 4-6 people",
+                "isDeleted" : false
+            },
+            "menuid" : ObjectId("5e9f72844ccda1e2ec35575f"),
+            "menuname" : "SAUSAGE DIAVOLO TAKE & BAKE",
+            "menucount" : 1
+        }
+    ],
+    "userid" : "5eb0ca262d94d32a9757dee7",
+    "username" : "qwerqwer",
+    "orderid" : "1588746978376",
+    "ordertime" : "5/6/2020, 1:36:18 AM",
+    "totalPrice" : "63.98"
+}
